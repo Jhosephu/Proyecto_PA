@@ -6,6 +6,17 @@
 
 using namespace std;
 
+class Utilidades{
+	private:
+		vector<Utilidades> utilidades;
+		
+	public:
+		void mostrarMenuPrincipal();
+		void gestionarProductos();
+		void reporteConsultas();
+		void operacioneVentas();
+		void archivo();
+};
 
 
 #endif
