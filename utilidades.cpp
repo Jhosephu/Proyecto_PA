@@ -4,7 +4,6 @@
 #include <cstdlib> // Para usar system()
 using namespace std;
 
-
 Utilidades::Utilidades() {
     // Constructor vacio por ahora
 }
