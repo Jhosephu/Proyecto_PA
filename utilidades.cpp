@@ -1,8 +1,40 @@
 #include "utilidades.h"
 
+HEAD
 #include <iostream>
 #include <cstdlib> // Para usar system()
 using namespace std;
+
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
+
+void mostrarMenuPrincipal()
+{
+	;
+}
+void gestionarProductos()
+{
+	;
+}
+
+void reporteConsultas()
+{
+	;
+}
+
+void operacioneVentas()
+{
+	;
+}
+
+void archivo()
+{
+	;
+}
+c6d7999a9317eb34d9ef9ed34dc6acf038a25373
 
 Utilidades::Utilidades() {
     // Constructor vacio por ahora
