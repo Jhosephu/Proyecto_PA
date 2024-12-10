@@ -6,19 +6,20 @@
 
 using namespace std;
 
-class Venta{
-	private:
-		int id;
-		vector<Producto> produtos;
-		float total;
-		bool pendiente;
-		string fecha;
-	public:
-		Venta(int, vector<Producto>, string);
-		void calcularTotal(vector<Producto>);
-		void cambiarEstado(bool);
-		void mostrarDatos();
-		string obtenerFecha();
-}
+class Venta {
+    private:
+        int id;
+        vector<Producto> productos;
+        float total;
+        bool pendiente;
+        string fecha;
+    
+    public:
+        Venta(int, vector<Producto>, string);
+        void calcularTotal(vector<Producto>);
+        void cambiarEstado(bool);             
+        void mostrarDatos();                  
+        string obtenerFecha();                
+};
 
 #endif
