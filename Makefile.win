@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o almacen.o producto.o utilidades.o venta.o
-LINKOBJ  = main.o almacen.o producto.o utilidades.o venta.o
+OBJ      = main.o almacen.o producto.o utilidades.o venta.o transacciones.o
+LINKOBJ  = main.o almacen.o producto.o utilidades.o venta.o transacciones.o
 LIBS     = -L"F:/Dev-Cpp/MinGW64/lib" -L"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"F:/Dev-Cpp/MinGW64/include" -I"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"F:/Dev-Cpp/MinGW64/include" -I"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -38,3 +38,6 @@ utilidades.o: utilidades.cpp
 
 venta.o: venta.cpp
 	$(CPP) -c venta.cpp -o venta.o $(CXXFLAGS)
+
+transacciones.o: transacciones.cpp
+	$(CPP) -c transacciones.cpp -o transacciones.o $(CXXFLAGS)
