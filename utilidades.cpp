@@ -1,5 +1,12 @@
 #include "utilidades.h"
+#include "producto.h"
 
+
+#include<stdlib.h>
+#include<windows.h>
+
+#include <iomanip>
+#include <string>
 #include <iostream>
 #include <cstdlib> // Para usar system()
 using namespace std;
@@ -22,17 +29,45 @@ void Utilidades::limpiarPantalla() {
 }
 
 void Utilidades::mostrarMenuPrincipal() {
+	
     int opcion = 0;
     do {
-        limpiarPantalla();
-        cout << "========= MENU PRINCIPAL =========\n";
-        cout << "1. Gestionar Productos\n";
-        cout << "2. Reporte de Consultas\n";
-        cout << "3. Operaciones de Ventas\n";
-        cout << "4. Archivos\n";
-        cout << "5. Salir del Sistema\n";
+    	limpiarPantalla();
+		
+		// Colores para secciones del menú
+	    int colorTitulo = 11;   // Amarillo brillante
+	    int colorOpciones = 14; // Azul brillante
+	    int colorBordes = 8;    // Gris
+
+		system("color 0F");
+    	gotoxy(40,5);
+    	cambiarColorTexto(colorBordes);
+    	cout << "==================================\n";
+    	gotoxy(40, 7);
+    	cambiarColorTexto(colorTitulo);
+        cout << "          MENU PRINCIPAL          \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
+        cout << "1. GESTIONAR PRODUCTOS\n";
+		gotoxy(45, 13); 
+        cout << "2. REPORTE DE CONSULTAS\n";
+        gotoxy(45, 15);
+        cout << "3. OPERACIONES DE VENTAS\n";
+        gotoxy(45, 17);
+        cout << "4. ARCHIVOS\n";
+        gotoxy(45, 19);
+        cout << "5. SALIR DEL SISTEMA\n";
+        gotoxy(40, 23);
+        cambiarColorTexto(colorBordes);
         cout << "==================================\n";
+        gotoxy(43, 25);
+        cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
+        gotoxy(40,27);
+        cambiarColorTexto(colorBordes);
+        cout << "==================================\n";
+     	gotoxy(67, 25);
+     	cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
@@ -59,15 +94,42 @@ void Utilidades::mostrarMenuPrincipal() {
 }
 
 void Utilidades::gestionarProductos() {
+
+	
     int opcion = 0;
     do {
-        limpiarPantalla();
-        cout << "========= MENU DE PRODUCTOS =========\n";
+    	limpiarPantalla();
+    	
+    	// Colores para el menú de productos
+        int colorTitulo = 10;   // Verde brillante
+        int colorOpciones = 15; // Amarillo brillante
+        int colorBordes = 8;    // Gris
+    	
+    	
+    	gotoxy(40,5);
+    	cambiarColorTexto(colorBordes);
+		cout << "==================================\n";
+		gotoxy(40, 7);
+		cambiarColorTexto(colorTitulo);
+        cout << "        MENU DE PRODUCTOS         \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
         cout << "1. Modificar Producto\n";
+        gotoxy(45, 13); 
         cout << "2. Consultar Producto\n";
+        gotoxy(45, 15);
         cout << "3. Regresar al Menu Principal\n";
-        cout << "=====================================\n";
+        gotoxy(40, 19);
+        cambiarColorTexto(colorBordes);
+        cout << "==================================\n";
+        gotoxy(45, 21);
+        cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
+        gotoxy(40, 23);
+        cambiarColorTexto(colorBordes);
+        cout << "==================================\n";
+        gotoxy(68, 21);
+        cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
@@ -90,13 +152,37 @@ void Utilidades::reporteConsultas() {
     int opcion = 0;
     do {
         limpiarPantalla();
-        cout << "========= MENU DE CONSULTAS =========\n";
+        
+        int colorTitulo = 14;   // Amarillo brillante
+	    int colorOpciones = 5; // Azul brillante
+	    int colorBordes = 8;    // Gris
+        
+    	gotoxy(40,5);
+    	cambiarColorTexto(colorBordes);
+		cout << "==================================\n";
+		gotoxy(40, 7);
+		cambiarColorTexto(colorTitulo);
+        cout << "          MENU DE CONSULTAS          \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
         cout << "1. Estado del Almacen\n";
+        gotoxy(45, 13);
         cout << "2. Estado de Ventas\n";
+        gotoxy(45, 15);
         cout << "3. Resumen de Ventas\n";
+        gotoxy(45, 17);
         cout << "4. Regresar al Menu Principal\n";
+        gotoxy(40, 21);
+        cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
+        gotoxy(45, 23);
+        cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
+        gotoxy(40, 25);
+        cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(67, 23);
+        cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
@@ -122,13 +208,37 @@ void Utilidades::operacioneVentas() {
     int opcion = 0;
     do {
         limpiarPantalla();
-        cout << "========= MENU DE VENTAS =========\n";
+        
+        int colorTitulo = 12;   // Amarillo brillante
+	    int colorOpciones = 7; // Azul brillante
+	    int colorBordes = 8;    // Gris
+        
+        gotoxy(40,5);
+        cambiarColorTexto(colorBordes);
+		cout << "==================================\n";
+		gotoxy(40, 7);
+		cambiarColorTexto(colorTitulo);
+        cout << "          MENU DE VENTAS          \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
         cout << "1. Registrar una Venta\n";
+        gotoxy(45, 13);
         cout << "2. Emitir Comprobante\n";
+        gotoxy(45, 15);
         cout << "3. Actualizar Stock\n";
+        gotoxy(45, 17);
         cout << "4. Regresar al Menu Principal\n";
-        cout << "==================================\n";
+        gotoxy(40, 21);
+        cambiarColorTexto(colorBordes);
+        cout << "===================================\n";
+        gotoxy(45, 23);
+        cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
+        gotoxy(40, 25);
+        cambiarColorTexto(colorBordes);
+        cout << "===================================\n";
+        gotoxy(67, 23);
+        cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
@@ -151,15 +261,39 @@ void Utilidades::operacioneVentas() {
 }
 
 void Utilidades::archivo() {
+	
     int opcion = 0;
     do {
         limpiarPantalla();
-        cout << "========= MENU DE ARCHIVOS =========\n";
+
+		int colorTitulo = 9;   // Amarillo brillante
+	    int colorOpciones = 11; // Azul brillante
+	    int colorBordes = 8;    // Gris
+
+		gotoxy(40,5);
+		cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(40, 7);
+        cambiarColorTexto(colorTitulo);
+        cout << "          MENU DE ARCHIVOS           \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
         cout << "1. Cargar Datos desde Archivo\n";
+        gotoxy(45, 13);
         cout << "2. Guardar Datos en Archivo\n";
+        gotoxy(45, 15);
         cout << "3. Regresar al Menu Principal\n";
-        cout << "====================================\n";
+        gotoxy(40, 19);
+        cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(45, 21);
+        cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
+        gotoxy(40, 23);
+        cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(68, 21);
+        cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
@@ -178,3 +312,18 @@ void Utilidades::archivo() {
     } while (opcion != 3);
 }
 
+//// FUNCION GOTO PARA COLOCAR LAS COORDENADAS DEL MENU ////
+void Utilidades::gotoxy(int x, int y)
+{
+	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD dwPos;
+	dwPos.X = x;
+	dwPos.Y = y;
+	SetConsoleCursorPosition(hcon, dwPos);
+}
+
+// Funcion para cambiar el color de texto
+void Utilidades::cambiarColorTexto(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}

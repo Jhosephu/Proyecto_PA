@@ -3,41 +3,8 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-#include <fstream>
-#include <sstream>
 
 using namespace std;
-
-void Almacen::cargarDesdeArchivo(){
-	ifstream archivo(nombreArchivo);
-	
-	if(!archivo.is_open()){
-		cout << "ERROR: no se pudo abrir el archivo";
-		return;
-	}
-	
-	int ID, cantidad;
-	double precio;
-	string nombre;
-	
-	string linea;
-	
-	
-	while(getline(archivo, linea)){
-		istringstream stream(linea);
-		
-		if(stream >> ID >> nombre >> cantidad >> precio){
-			Producto prod(ID, nombre, cantidad, precio);
-			agregarProducto(prod);
-		} else {
-			cout << "ERROR: no se puede procesar los datos";
-		}
-	}
-}
-
-void Almacen::cambiarNombreArchivo(string nuevoNombre){
-	nombreArchivo = nuevoNombre;
-}
 
 void Almacen::insertarOrdenadoPorID(Producto &nuevoProducto) {
 	if (productos.empty()) {
@@ -79,7 +46,7 @@ void Almacen::mostrarProductos() {
 	}
 }
 
-void Almacen::actualizarPrecioProducto(int id, float nuevoPrecio){
+void Almacen::actualizarPrecioProducto(int id, double nuevoPrecio){
 	int pos = buscarPorID(id);
 	if (pos != -1){
 		productos[pos].actualizarPrecio(nuevoPrecio);

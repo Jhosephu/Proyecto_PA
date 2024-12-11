@@ -1,11 +1,15 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 
+#include "producto.h"
 #include <vector>
 
+using namespace std;
 
 class Utilidades
 {
+	private:
+		vector<Producto> inventario;
 	public:
 		Utilidades();
 		~Utilidades();
@@ -15,6 +19,8 @@ class Utilidades
 		void operacioneVentas();
 		void archivo();
 		void limpiarPantalla();
+		void gotoxy(int, int);
+		void cambiarColorTexto(int);
 };
 
 

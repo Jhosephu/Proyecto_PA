@@ -9,17 +9,14 @@ class Producto {
 		int id;
     	string nombre;
     	int cantidad;
-    	float precio;	
+    	double precio;	
 	public:
-		Producto(int i, string n, int c, float p);
 		bool operator<(const Producto &otro);
     	bool operator==(const Producto& otro);
 		int obID(); // Obtener ID
 		string obNombre(); // Obtener Nombre
-		int obCantidad(); // Obtener Cantidad
-		float obPrecio(); // Obtener Precio
     	void mostrar();
-    	void actualizarPrecio(float nuevoPrecio);
+    	void actualizarPrecio(double nuevoPrecio);
     	void aumentarCantidad(int cantidad);
 		void reducirCantidad(int cantidad);
 };
