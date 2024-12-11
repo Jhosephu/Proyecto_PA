@@ -1,25 +1,33 @@
 # Project: Proyecto 1
-# Makefile created by Dev-C++ 5.11
+# Makefile created by Embarcadero Dev-C++ 6.3
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
+<<<<<<< HEAD
 OBJ      = main.o almacen.o producto.o utilidades.o venta.o transacciones.o
 LINKOBJ  = main.o almacen.o producto.o utilidades.o venta.o transacciones.o
 LIBS     = -L"F:/Dev-Cpp/MinGW64/lib" -L"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"F:/Dev-Cpp/MinGW64/include" -I"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"F:/Dev-Cpp/MinGW64/include" -I"F:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+=======
+OBJ      = main.o almacen.o producto.o utilidades.o venta.o
+LINKOBJ  = main.o almacen.o producto.o utilidades.o venta.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+>>>>>>> 64e041dd675ee4308eb119ffbe03fa0ce00bc67a
 BIN      = "Proyecto 1.exe"
-CXXFLAGS = $(CXXINCS) -std=c++11 -Wall
-CFLAGS   = $(INCS) -std=c++11 -Wall
-RM       = rm.exe -f
+CXXFLAGS = $(CXXINCS) -m64 -O2
+CFLAGS   = $(INCS) -m64 -O2
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BIN) all-after
 
 clean: clean-custom
-	${RM} $(OBJ) $(BIN)
+	${DEL} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
