@@ -8,6 +8,12 @@
 
 using namespace std;
 
+Almacen::Almacen(){
+	nombreArchivo = "productos.txt";
+}
+
+Almacen::Almacen(string nA) : nombreArchivo(nA) {}
+
 void Almacen::cargarDesdeArchivo(){
 	ifstream archivo(nombreArchivo);
 	
@@ -16,23 +22,43 @@ void Almacen::cargarDesdeArchivo(){
 		return;
 	}
 	
-	int ID, cantidad;
-	double precio;
+	int id, cantidad;
+	float precio;
 	string nombre;
 	
 	string linea;
 	
-	
 	while(getline(archivo, linea)){
-		istringstream stream(linea);
+		stringstream ss(linea);
 		
-		if(stream >> ID >> nombre >> cantidad >> precio){
-			Producto prod(ID, nombre, cantidad, precio);
-			agregarProducto(prod);
-		} else {
-			cout << "ERROR: no se puede procesar los datos";
-		}
+        // Leer ID, cantidad y precio primero
+        ss >> id >> cantidad >> precio;
+        ss.ignore(); // Ignorar el espacio después del precio
+        getline(ss, nombre);
+        
+        Producto prod(id, nombre, cantidad, precio);
+        agregarProducto(prod);
 	}
+	
+	archivo.close();
+}
+
+void Almacen::guardarEnArchivo() {
+	ofstream archivo(nombreArchivo);
+	
+	if(!archivo.is_open()){
+		cout << "ERROR: no se pudo abrir el archivo";
+		return;
+	}
+	
+	for (Producto &producto : productos) {
+       archivo << producto.obID() << " " 
+               << producto.obCantidad() << " " 
+               << producto.obPrecio() << " " 
+               << producto.obNombre() << std::endl;
+   }
+   
+   archivo.close();
 }
 
 void Almacen::cambiarNombreArchivo(string nuevoNombre){
@@ -73,6 +99,17 @@ void Almacen::agregarProducto(Producto &producto) {
 	insertarOrdenadoPorID(producto);
 }
 
+void Almacen::eliminarProducto(int id){
+	int pos = buscarPorID(id);
+	if(pos != -1){
+		productos.erase(productos.begin()+pos);
+		cout << "Producto eliminado correctamente" << endl;
+		return;
+	} else {
+		cout << "ERROR: No se encontro el Producto" << endl;
+	}
+}
+
 void Almacen::mostrarProductos() {
 	for (Producto &producto : productos) {
 		producto.mostrar();
@@ -102,13 +139,13 @@ void Almacen::reducirCantidadProducto(int id, int cantidad) {
 	if (pos != -1){
 		productos[pos].reducirCantidad(cantidad);
 		
-		/*
-		if (productos[pos].cantidad < 0) {
+		if (productos[pos].obCantidad() < 0) {
 			cout << "ERROR: No puede reducir a una cantidad menor que 0" << endl;
-		} else if (productos[pos].cantidad == 0){
-			productos.erase(productos.begin()+pos); // Dudando si dejarlo aqui o controlarlo afuera
+			productos[pos].aumentarCantidad(cantidad);
+		} else if (productos[pos].obCantidad() == 0){
+			cout << "ADVERTENCIA: Producto ahora sin stock" << endl;
 		}
-		*/
+		
 	} else {
 		cout << "ERROR: No se encontro el Producto" << endl;
 	}

@@ -15,9 +15,12 @@ class Almacen {
     	
 	public:
 		Almacen();
+		Almacen(string nA);
 		void cargarDesdeArchivo();
+		void guardarEnArchivo();
 		void cambiarNombreArchivo(string nuevoNombre);
 		void agregarProducto(Producto &producto);
+		void eliminarProducto(int id);
     	void mostrarProductos();
     	void actualizarPrecioProducto(int id, float nuevoPrecio);
     	void aumentarCantidadProducto(int id, int cantidad);
