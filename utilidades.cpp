@@ -1,6 +1,8 @@
 #include "utilidades.h"
 #include "producto.h"
-
+#include "venta.h"
+#include "transacciones.h"
+#include "almacen.h"
 
 #include<stdlib.h>
 #include<windows.h>
@@ -215,8 +217,10 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 }
 
 void Utilidades::operacioneVentas() {
-
->>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
+	Almacen almacen;
+    almacen.cargarDesdeArchivo();
+	Venta venta;
+    Transacciones transacciones;
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -236,13 +240,9 @@ void Utilidades::operacioneVentas() {
         cout << "1. Registrar una Venta\n";
         gotoxy(45, 13);
         cout << "2. Emitir Comprobante\n";
-<<<<<<< HEAD
-        cout << "3. Actualizar Stock para devoluciones\n";
-=======
         gotoxy(45, 15);
         cout << "3. Actualizar Stock\n";
         gotoxy(45, 17);
->>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
         cout << "4. Regresar al Menu Principal\n";
         gotoxy(40, 21);
         cambiarColorTexto(colorBordes);
@@ -259,7 +259,6 @@ void Utilidades::operacioneVentas() {
 		
         switch (opcion) {
             case 1:
-<<<<<<< HEAD
 				do{
 					int idProducto, cantidad, idVenta;
 				    string fecha;
@@ -309,16 +308,6 @@ void Utilidades::operacioneVentas() {
 				venta.actualizarStock();
             	system("PAUSE");
 				break; 
-=======
-                cout << "Opcion de Registrar una Venta seleccionada.\n"; // funcion no agregada todavia
-                break;
-            case 2:
-                cout << "Opcion de Emitir Comprobante seleccionada.\n"; // funcion no agregada todavia
-                break;
-            case 3:
-                cout << "Opcion de Actualizar Stock seleccionada.\n"; // funcion no agregada todavia
-                break; 
->>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
             case 4:
                 cout << "Regresando al Menu Principal...\n";
                 break;
