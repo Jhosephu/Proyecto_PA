@@ -47,7 +47,7 @@ void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
     	cout << "==================================\n";
     	gotoxy(40, 7);
     	cambiarColorTexto(colorTitulo);
-        cout << "          MENU PRINCIPAL          \n";
+        cout << "      MINIMARKET TACNAMARKET        \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. GESTIONAR PRODUCTOS\n";
@@ -80,17 +80,19 @@ void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
                 reporteConsultas(almacen);
                 break;
             case 3:
-                operacioneVentas();
+                operacioneVentas(almacen);
                 break;
             case 4:
                 archivo();
                 break;
             case 5:
             	cout << "\n";
+            	gotoxy(40, 29);
                 cout << "Saliendo del sistema...\n";
+                almacen.guardarEnArchivo("");
                 break;
             default:
-                cout << "Opcion no valida. Intente nuevamente.\n";
+                cout << "Opción no válida. Intente nuevamente.\n";
         }
     } while (opcion != 5);
 }
@@ -113,7 +115,7 @@ void Utilidades::gestionarProductos(Almacen &almacen) {
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "        MENU DE PRODUCTOS         \n";
+        cout << "        MENÚ DE PRODUCTOS         \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Agregar Producto\n";
@@ -124,7 +126,7 @@ void Utilidades::gestionarProductos(Almacen &almacen) {
         gotoxy(45, 17); 
         cout << "4. Eliminar Producto\n";
         gotoxy(45, 19);
-        cout << "5. Regresar al Menu Principal\n";
+        cout << "5. Regresar al Menú Principal\n";
         gotoxy(40, 23);
         cambiarColorTexto(colorBordes);
         cout << "==================================\n";
@@ -174,7 +176,7 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "          MENU DE CONSULTAS          \n";
+        cout << "          MENÚ DE CONSULTAS          \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Estado del Almacen\n";
@@ -183,7 +185,7 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
         gotoxy(45, 15);
         cout << "3. Resumen de Ventas\n";
         gotoxy(45, 17);
-        cout << "4. Regresar al Menu Principal\n";
+        cout << "4. Regresar al Menú Principal\n";
         gotoxy(40, 21);
         cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
@@ -199,7 +201,7 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 
         switch (opcion) {
             case 1:
-                cout << "Opcion de Estado del Almacen seleccionada.\n"; // funcion no agregada todavia
+                reporteEstadoDelAlmacen(almacen);
                 break;
             case 2:
                 cout << "Opcion de Estado de Ventas seleccionada.\n"; // funcion no agregada todavia
@@ -216,9 +218,7 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
     } while (opcion != 4);
 }
 
-void Utilidades::operacioneVentas() {
-	Almacen almacen;
-    almacen.cargarDesdeArchivo();
+void Utilidades::operacioneVentas(Almacen &almacen) {
 	Venta venta;
     Transacciones transacciones;
     int opcion = 0;
@@ -234,7 +234,7 @@ void Utilidades::operacioneVentas() {
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "          MENU DE VENTAS          \n";
+        cout << "          MENÚ DE VENTAS          \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Registrar una Venta\n";
@@ -332,7 +332,7 @@ void Utilidades::archivo() {
         cout << "=====================================\n";
         gotoxy(40, 7);
         cambiarColorTexto(colorTitulo);
-        cout << "          MENU DE ARCHIVOS           \n";
+        cout << "          MENÚ DE ARCHIVOS           \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Cargar Datos desde Archivo\n";
@@ -367,6 +367,67 @@ void Utilidades::archivo() {
                 cout << "Opcion no valida. Intente nuevamente.\n";
         }
     } while (opcion != 3);
+}
+
+void Utilidades::reporteEstadoDelAlmacen(Almacen &almacen) {
+    int opcion = 0;
+    do {
+        limpiarPantalla();
+        
+        int colorTitulo = 9;   
+        int colorOpciones = 11; 
+        int colorBordes = 8; 
+        
+        gotoxy(40,5);
+        cambiarColorTexto(colorBordes);
+        cout << "==================================\n";
+        gotoxy(40, 7);
+        cambiarColorTexto(colorTitulo);
+        cout << "          ESTADO DEL ALMACEN          \n";
+        gotoxy(45, 11);
+        cambiarColorTexto(colorOpciones);
+        cout << "1. Todos los Productos\n";
+        gotoxy(45, 13);
+        cout << "2. Productos con Bajo Stock\n";
+        gotoxy(45, 15);
+        cout << "3. Productos por Prefijo de Nombre\n";
+        gotoxy(45, 17);
+        cout << "4. Productos Ordenados por Precio\n";
+        gotoxy(45, 19);
+        cout << "5. Regresar al Menú de Consultas\n";
+        gotoxy(40, 23);
+        cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(45, 25);
+        cambiarColorTexto(colorTitulo);
+        cout << "Seleccione una opcion: ";
+        gotoxy(40, 27);
+        cambiarColorTexto(colorBordes);
+        cout << "=====================================\n";
+        gotoxy(67, 25);
+        cambiarColorTexto(colorOpciones);
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                reporteTodosLosProductos(almacen);
+                break;
+            case 2:
+                reporteProductosConBajoStock(almacen);
+                break;
+            case 3:
+                reporteProductosPorPrefijo(almacen);
+                break;
+            case 4:
+                reporteProductosOrdenadosPorPrecio(almacen);
+                break;
+            case 5:
+                cout << "Regresando al Menú de Consultas...\n";
+                break;
+            default:
+                cout << "Opcion no valida. Intente nuevamente.\n";
+        }
+    } while (opcion != 5);
 }
 
 // fUNCIONES GestionarProductos
@@ -421,7 +482,7 @@ void Utilidades::modificarProductoM(Almacen &almacen) {
 
         printC(x, y+6, "Producto modificado exitosamente!\n\n");
     } else {
-        printC(x, y+2, "ERROR: No se encontro el Producto con ese ID.\n\n");
+        printC(x, y+2, "ERROR: No se encontró el Producto con ese ID.\n\n");
     }
 
     system("pause");
@@ -448,7 +509,7 @@ void Utilidades::buscarProductoM(Almacen &almacen) {
             printC(x, y+10, "Producto encontrado:\n");
             printProducto(x, y+12, p);
         } else {
-            printC(x, y+10, "ERROR: No se encontro el Producto con ese ID.\n\n");
+            printC(x, y+10, "ERROR: No se encontró el Producto con ese ID.\n\n");
         }
     } else if (opcion == 2) {
         cin.ignore();
@@ -460,10 +521,10 @@ void Utilidades::buscarProductoM(Almacen &almacen) {
             printC(x, y+10, "Producto encontrado:\n");
             printProducto(x, y+12, producto);
         } else {
-            printC(x, y+10, "ERROR: No se encontro el Producto con ese nombre.\n\n");
+            printC(x, y+10, "ERROR: No se encontró el Producto con ese nombre.\n\n");
         }
     } else {
-        printC(x, y+8, "Opcion no valida.\n\n");
+        printC(x, y+8, "Opción no válida.\n\n");
     }
 
     system("pause");
@@ -480,7 +541,92 @@ void Utilidades::eliminarProductoM(Almacen &almacen) {
         almacen.eliminarProducto(id);
         printC(x, y+2, "Producto eliminado exitosamente!\n\n");
     } else {
-        printC(x, y+2, "ERROR: No se encontro el Producto con ese ID.\n\n");
+        printC(x, y+2, "ERROR: No se encontrÓ el Producto con ese ID.\n\n");
+    }
+
+    system("pause");
+}
+
+// FUNCIONES DE REPORTE Y CONSULTAS: ESTADO DEL ALMACEN
+
+void Utilidades::reporteProductosConBajoStock(Almacen &almacen) {
+    int x = 40, y = 29;
+    int stockLimite = 5; // Puedes cambiar este valor si lo deseas
+
+    printC(x, y, "Reporte de Productos con Bajo Stock (Stock <= " + to_string(stockLimite) + "):\n");
+    printC(x, y+2, "=====================================================\n");
+
+    vector<Producto*> productosBajoStock = almacen.productosConBajoStock(stockLimite);
+
+    if (productosBajoStock.empty()) {
+        printC(x, y+4, "No hay productos con bajo stock.\n");
+    } else {
+        for (int i = 0; i < productosBajoStock.size(); i++) {
+            printProducto2(x, y+4+(2*i), productosBajoStock[i]);
+        }
+    }
+
+    system("pause");
+}
+
+void Utilidades::reporteTodosLosProductos(Almacen &almacen) {
+    int x = 40, y = 29;
+
+    printC(x, y, "Reporte de Todos los Productos en el Almacen:\n");
+    printC(x, y+2, "=====================================================\n");
+
+    vector<Producto> ps = almacen.obtenerProductos();
+    
+    for (int i = 0; i < ps.size(); i++) {
+    	Producto* p = &ps[i];
+        printProducto2(x, y+4+(2*i), p);
+    }
+
+    system("pause");
+}
+
+void Utilidades::reporteProductosPorPrefijo(Almacen &almacen) {
+    int x = 40, y = 29;
+    string prefijo;
+
+    printC(x, y, "Ingrese el prefijo del nombre del producto: ");
+    cin.ignore();
+    getline(cin, prefijo);
+
+    printC(x, y+2, "Reporte de Productos que comienzan con '" + prefijo + "':\n");
+    printC(x, y+4, "=====================================================\n");
+
+    vector<Producto*> productosEncontrados = almacen.encontrarPorInicioNombre(prefijo);
+
+    if (productosEncontrados.empty()) {
+        printC(x, y+6, "No se encontraron productos que coincidan con el prefijo '" + prefijo + "'.\n");
+    } else {
+        for (int i = 0; i < productosEncontrados.size(); i++) {
+            printProducto2(x, y+6+(2*i), productosEncontrados[i]);
+        }
+    }
+
+    system("pause");
+}
+
+void Utilidades::reporteProductosOrdenadosPorPrecio(Almacen &almacen) {
+    int x = 40, y = 29;
+
+    printC(x, y, "Reporte de Productos Ordenados por Precio:\n");
+    printC(x, y+2, "=====================================================\n");
+
+    // Crear una copia de los productos para ordenarlos
+    vector<Producto> productosOrdenados = almacen.obtenerProductos();
+
+    // Ordenar los productos por precio
+    sort(productosOrdenados.begin(), productosOrdenados.end(), [](Producto& a, Producto& b) {
+        return a.obPrecio() < b.obPrecio();
+    });
+
+    // Mostrar los productos ordenados
+    for (int i = 0; i < productosOrdenados.size(); i++) {
+    	Producto* p = &productosOrdenados[i];
+        printProducto2(x, y+4+(2*i), p);
     }
 
     system("pause");
@@ -516,7 +662,7 @@ void Utilidades::printProducto(int x, int y, Producto* p) {
     cout << "===================================" << endl;
     gotoxy(40,7);
     cambiarColorTexto(colorTitulo);
-    cout << "     INFORMACION DEL PRODUCTO      " << endl;
+    cout << "     INFORMACIÓN DEL PRODUCTO      " << endl;
     gotoxy(40,9);
     cambiarColorTexto(colorBordes);
     cout << "===================================" << endl;
@@ -534,6 +680,11 @@ void Utilidades::printProducto(int x, int y, Producto* p) {
     cout << "===================================" << endl;	
 }
 
+void Utilidades::printProducto2(int x, int y, Producto* p){
+	gotoxy(x, y);
+    cout << "ID: " << p->obID() << "\tNombre: " << p->obNombre() << "\tCantidad: "
+		<< p->obCantidad() << "\tPrecio: " << p->obPrecio() << endl;
+}
 // Funcion para cambiar el color de texto
 void Utilidades::cambiarColorTexto(int color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
