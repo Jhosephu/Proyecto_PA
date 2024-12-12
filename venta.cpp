@@ -1,37 +1,45 @@
 #include <bits/stdc++.h>
 #include "venta.h"
 #include "producto.h"
+#include "almacen.h"
 
 using namespace std;
 
-Venta::Venta(int i, string f){
+Venta::Venta() {};
+
+Venta::Venta(int i, Producto p, string f){
 	id = i;
+	productos.push_back(p);
     fecha = f;
 }
 
 void Venta::agregarProducto(Producto p, int cantidad) {
-    vector<Producto> productoParaVenta;
-	productoParaVenta[id] = p;  // Copia para reducir stock de la clase Producto
-    productoParaVenta[id].reducirCantidad(cantidad);
-    productoParaVenta.push_back(p);
-    total += p.obPrecio() * cantidad;
+	productos.push_back(p);
+    unidades = cantidad;
+    total += p.obPrecio() * unidades;
 }
 
-void Venta::mostrarVenta() {
+void Venta::mostrarComprobante() {
     cout << "Venta ID: " << id << endl;
     cout << "Fecha: " << fecha << endl;
-    cout << "Total: " << total << endl;
+    cout << "Total: " << total << " USD" << endl;
     cout << "Productos: " << endl;
-    for (auto& producto : productos) {
-		cout << "- " << producto.obNombre() << ": " 
-             << producto.obPrecio() << endl;
+    for (size_t i = 0; i < productos.size(); i++) {
+        cout << "- " << productos[i].obNombre() << endl;
     }
 }
 
 void Venta::actualizarStock() {
-    for (auto& producto : productos) {
-        producto.reducirCantidad(1); // Ejemplo: Reducir en 1 el stock de cada producto
-    }
+	Almacen inventario;
+	inventario.mostrarProductos();
+	int idProducto, cantidad;
+	cout << "Ingrese el ID del producto para actualizar su cantidad: ";
+	cin >> idProducto;
+	cout << "Ingrese la cantidad a agregar: ";
+	cin >> cantidad;
+	inventario.aumentarCantidadProducto(idProducto, cantidad);
+	cout << "Stock actualizado correctamente.\n";
 }
+
 
 
