@@ -135,7 +135,7 @@ void Utilidades::operacioneVentas() {
         cout << "==================================\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
-
+		Transacciones transaccion;
         switch (opcion) {
             case 1:
 				do{
@@ -162,7 +162,6 @@ void Utilidades::operacioneVentas() {
                 break;
             case 2:
             	do{
-            		Transacciones transaccion;
                 	cout << "\nEmitir Comprobante:\n";
                 	int idVenta;
                 	cout << "Ingrese el ID de la venta para emitir el comprobante: ";
@@ -175,7 +174,6 @@ void Utilidades::operacioneVentas() {
                 break;
             case 3:
             	do{
-            		Transacciones transaccion;
                 	cout << "\nActualizar Stock basado en ventas:\n";
                 	transaccion.actualizarStockVentas();
             	}while(0);
