@@ -47,6 +47,7 @@ Producto* Almacen::buscarPorNombre(string nombreBuscado) {
 }
 
 void Almacen::cargarDesdeArchivo() {
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
 	ifstream archivo(nombreArchivo);
 
 	if(!archivo.is_open()) {
@@ -216,8 +217,16 @@ void Almacen::reducirCantidadProducto(int id, int cantidad) {
 	}
 }
 
+<<<<<<< HEAD
+Producto Almacen::obtenerProductoPorID(int id) {
+    int pos = buscarPorID(id);
+	return productos[pos];
+}
+
+=======
 bool Almacen::verificarIdEnProductos(int id) {
 	int pos = buscarPorID(id);
 	if(pos != -1) return true;
 	return false;
 }
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7

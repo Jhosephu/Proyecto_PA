@@ -215,6 +215,8 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 }
 
 void Utilidades::operacioneVentas() {
+
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -234,9 +236,13 @@ void Utilidades::operacioneVentas() {
         cout << "1. Registrar una Venta\n";
         gotoxy(45, 13);
         cout << "2. Emitir Comprobante\n";
+<<<<<<< HEAD
+        cout << "3. Actualizar Stock para devoluciones\n";
+=======
         gotoxy(45, 15);
         cout << "3. Actualizar Stock\n";
         gotoxy(45, 17);
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
         cout << "4. Regresar al Menu Principal\n";
         gotoxy(40, 21);
         cambiarColorTexto(colorBordes);
@@ -250,9 +256,60 @@ void Utilidades::operacioneVentas() {
         gotoxy(67, 23);
         cambiarColorTexto(colorOpciones);
         cin >> opcion;
-
+		
         switch (opcion) {
             case 1:
+<<<<<<< HEAD
+				do{
+					int idProducto, cantidad, idVenta;
+				    string fecha;
+					vector<Producto> productos;
+				    cout << "Ingrese el ID de la venta: ";
+				    cin >> idVenta;
+				    cout << "Ingrese la fecha de la venta: ";
+				    cin >> fecha;
+				    
+				    cout << "Ingrese el ID del producto a vender: ";
+				    cin >> idProducto;
+				    cout << "Ingrese la cantidad: ";
+				    cin >> cantidad;
+					
+				    int posProducto = almacen.buscarPorID(idProducto);
+				    if (posProducto != -1) {
+				        Producto producto = almacen.obtenerProductoPorID(idProducto);
+				        Venta venta(idVenta, producto, fecha);
+				        if (producto.obCantidad() >= cantidad) {
+				            venta.agregarProducto(producto, cantidad);
+				            transacciones.registrarVenta(venta);
+				            almacen.reducirCantidadProducto(idProducto, cantidad);
+				            cout << "Venta registrada exitosamente.\n";
+				        } else {
+				            cout << "Cantidad insuficiente en stock.\n";
+				        }
+				    } else {
+				        cout << "Producto no encontrado.\n";
+				    }
+				}while(0);
+				system("PAUSE");
+                break;
+            case 2:
+            	do{
+				    int idVenta;
+				    cout << "Ingrese el ID de la venta para emitir comprobante: ";
+				    cin >> idVenta;
+				
+				    Venta *ventas = transacciones.buscarVentaPorId(idVenta);
+				    if (ventas) {
+				        ventas->mostrarComprobante();
+				    }
+            	}while(0);
+            	system("PAUSE");
+                break;
+            case 3:
+				venta.actualizarStock();
+            	system("PAUSE");
+				break; 
+=======
                 cout << "Opcion de Registrar una Venta seleccionada.\n"; // funcion no agregada todavia
                 break;
             case 2:
@@ -261,6 +318,7 @@ void Utilidades::operacioneVentas() {
             case 3:
                 cout << "Opcion de Actualizar Stock seleccionada.\n"; // funcion no agregada todavia
                 break; 
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
             case 4:
                 cout << "Regresando al Menu Principal...\n";
                 break;

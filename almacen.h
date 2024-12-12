@@ -11,11 +11,13 @@ class Almacen {
 		vector<Producto> productos;
 		map<string, Producto*> indiceNombre;
 		string nombreArchivo;
+
 		
 		void insertarOrdenadoPorID(Producto &nuevoProducto);
 		void actualizarIndiceNombre();
 		vector<Producto*> encontrarPorInicioNombre(string nombrePrefijo);
     	
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
 	public:
 		Almacen();
 		Almacen(string nA);
@@ -33,7 +35,13 @@ class Almacen {
     	void actualizarPrecioProducto(int id, float nuevoPrecio);
     	void aumentarCantidadProducto(int id, int cantidad);
 		void reducirCantidadProducto(int id, int cantidad);
+<<<<<<< HEAD
+		void insertarOrdenadoPorID(Producto &nuevoProducto);
+    	int buscarPorID(int idBuscado);
+    	Producto obtenerProductoPorID(int id);
+=======
 		bool verificarIdEnProductos(int id);
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
 };
 
 #endif

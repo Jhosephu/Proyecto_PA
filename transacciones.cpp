@@ -9,7 +9,6 @@ Transacciones::Transacciones() {}
 // Implementación de métodos de la clase Transacciones
 void Transacciones::registrarVenta(Venta venta) {
     ventas.push_back(venta);
-    cout << "Venta registrada exitosamente.\n";
 }
 
 void Transacciones::listarVentas() {
@@ -20,7 +19,7 @@ void Transacciones::listarVentas() {
 
     cout << "========== LISTA DE VENTAS ==========\n";
     for (size_t i = 0; i < ventas.size(); i++) {
-        ventas[i].mostrarVenta();
+        ventas[i].mostrarComprobante();
         cout << "-------------------------------------\n";
     }
 }
@@ -35,10 +34,4 @@ Venta* Transacciones::buscarVentaPorId(int id) {
     return nullptr;
 }
 
-void Transacciones::actualizarStockVentas() {
-    for (Venta& venta : ventas) {
-        venta.actualizarStock();
-    }
-    cout << "El stock de los productos ha sido actualizado en base a las ventas realizadas.\n";
-}
 
