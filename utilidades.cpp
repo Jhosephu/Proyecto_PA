@@ -28,13 +28,13 @@ void Utilidades::limpiarPantalla() {
 #endif
 }
 
-void Utilidades::mostrarMenuPrincipal() {
+void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
 	
     int opcion = 0;
     do {
     	limpiarPantalla();
 		
-		// Colores para secciones del menú
+		// Colores para secciones del menï¿½
 		int colorTitulo = 9;   
 	    int colorOpciones = 11; 
 	    int colorBordes = 8; 
@@ -72,10 +72,10 @@ void Utilidades::mostrarMenuPrincipal() {
 
         switch (opcion) {
             case 1:
-                gestionarProductos();
+                gestionarProductos(almacen);
                 break;
             case 2:
-                reporteConsultas();
+                reporteConsultas(almacen);
                 break;
             case 3:
                 operacioneVentas();
@@ -93,14 +93,14 @@ void Utilidades::mostrarMenuPrincipal() {
     } while (opcion != 5);
 }
 
-void Utilidades::gestionarProductos() {
+void Utilidades::gestionarProductos(Almacen &almacen) {
 
 	
     int opcion = 0;
     do {
     	limpiarPantalla();
     	
-    	// Colores para el menú de productos
+    	// Colores para el menu de productos
 		int colorTitulo = 9;   
 	    int colorOpciones = 11; 
 	    int colorBordes = 8; 
@@ -114,41 +114,51 @@ void Utilidades::gestionarProductos() {
         cout << "        MENU DE PRODUCTOS         \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
-        cout << "1. Modificar Producto\n";
+        cout << "1. Agregar Producto\n";
         gotoxy(45, 13); 
-        cout << "2. Consultar Producto\n";
-        gotoxy(45, 15);
-        cout << "3. Regresar al Menu Principal\n";
-        gotoxy(40, 19);
-        cambiarColorTexto(colorBordes);
-        cout << "==================================\n";
-        gotoxy(45, 21);
-        cambiarColorTexto(colorTitulo);
-        cout << "Seleccione una opcion: ";
+        cout << "2. Modificar Producto\n";
+        gotoxy(45, 15); 
+        cout << "3. Buscar Producto\n";
+        gotoxy(45, 17); 
+        cout << "4. Eliminar Producto\n";
+        gotoxy(45, 19);
+        cout << "5. Regresar al Menu Principal\n";
         gotoxy(40, 23);
         cambiarColorTexto(colorBordes);
         cout << "==================================\n";
-        gotoxy(68, 21);
+        gotoxy(45, 25);
+        cambiarColorTexto(colorTitulo);
+        cout << "Seleccione una opcion: ";
+        gotoxy(40, 27);
+        cambiarColorTexto(colorBordes);
+        cout << "==================================\n";
+        gotoxy(68, 25);
         cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
         switch (opcion) {
             case 1:
-                cout << "Opcion de Modificar Producto seleccionada.\n"; // funcion no agregada todavia
+                agregarProductoM(almacen);
                 break;
             case 2:
-                cout << "Opcion de Consultar Producto seleccionada.\n"; // funcion no agregada todavia
+                modificarProductoM(almacen);
                 break;
             case 3:
+                buscarProductoM(almacen);
+                break;
+            case 4:
+                eliminarProductoM(almacen);
+                break;
+            case 5:
                 cout << "Regresando al Menu Principal...\n";
                 break;
             default:
                 cout << "Opcion no valida. Intente nuevamente.\n";
         }
-    } while (opcion != 3);
+    } while (opcion != 5);
 }
 
-void Utilidades::reporteConsultas() {
+void Utilidades::reporteConsultas(Almacen &almacen) {
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -295,7 +305,7 @@ void Utilidades::archivo() {
         gotoxy(68, 21);
         cambiarColorTexto(colorOpciones);
         cin >> opcion;
-
+		
         switch (opcion) {
             case 1:
                 cout << "Opcion de Cargar Datos desde Archivo seleccionada.\n"; // funcion no agregada todavia
@@ -312,6 +322,123 @@ void Utilidades::archivo() {
     } while (opcion != 3);
 }
 
+// fUNCIONES GestionarProductos
+
+void Utilidades::agregarProductoM(Almacen &almacen){
+	int x = 40, y = 29;
+	int id, cantidad;
+	float precio;
+	string nombre;
+	
+	printC(x, y, "Ingrese el ID del Producto: ");
+	
+	do {
+		cin >> id;
+		if(almacen.verificarIdEnProductos(id)) printC(x, y, "Ingrese otro ID de Producto: ");
+	} while(almacen.verificarIdEnProductos(id));
+	
+	cin.ignore();
+	printC(x, y+2, "Ingrese el nombre del Producto: "); 
+	getline(cin, nombre);
+	printC(x, y+4, "Ingrese el stock del Producto: "); 
+	cin >> cantidad;
+	printC(x, y+6, "Ingrese el precio del Producto: "); 
+	cin >> precio;
+	
+	Producto prod(id, nombre, cantidad, precio);
+	
+	almacen.agregarProducto(prod);
+	
+	printC(x, y+8, "Producto agregado exitosamente!\n\n");
+	
+	system("pause");
+}
+
+void Utilidades::modificarProductoM(Almacen &almacen) {
+    int x = 40, y = 29;
+    int id;
+    float nuevoPrecio;
+    int nuevaCantidad;
+
+    printC(x, y, "Ingrese el ID del Producto a modificar: ");
+    cin >> id;
+
+    if (almacen.verificarIdEnProductos(id)) {
+        printC(x, y+2, "Ingrese el nuevo precio del Producto: ");
+        cin >> nuevoPrecio;
+        printC(x, y+4, "Ingrese la nueva cantidad del Producto: ");
+        cin >> nuevaCantidad;
+
+        almacen.actualizarPrecioProducto(id, nuevoPrecio);
+        almacen.aumentarCantidadProducto(id, nuevaCantidad);
+
+        printC(x, y+6, "Producto modificado exitosamente!\n\n");
+    } else {
+        printC(x, y+2, "ERROR: No se encontro el Producto con ese ID.\n\n");
+    }
+
+    system("pause");
+}
+
+void Utilidades::buscarProductoM(Almacen &almacen) {
+    int x = 40, y = 29;
+    int id;
+    string nombre;
+    int opcion;
+
+    printC(x, y, "Buscar por:\n");
+    printC(x, y+2, "1. ID del Producto\n");
+    printC(x, y+4, "2. Nombre del Producto\n");
+    printC(x, y+6, "Seleccione una opcion: ");
+    cin >> opcion;
+
+    if (opcion == 1) {
+        printC(x, y+8, "Ingrese el ID del Producto: ");
+        cin >> id;
+
+        Producto* p = almacen.buscarPorIDs(id);
+        if (p) {
+            printC(x, y+10, "Producto encontrado:\n");
+            printProducto(x, y+12, p);
+        } else {
+            printC(x, y+10, "ERROR: No se encontro el Producto con ese ID.\n\n");
+        }
+    } else if (opcion == 2) {
+        cin.ignore();
+        printC(x, y+8, "Ingrese el nombre del Producto: ");
+        getline(cin, nombre);
+
+        Producto* producto = almacen.buscarPorNombre(nombre);
+        if (producto != nullptr) {
+            printC(x, y+10, "Producto encontrado:\n");
+            printProducto(x, y+12, producto);
+        } else {
+            printC(x, y+10, "ERROR: No se encontro el Producto con ese nombre.\n\n");
+        }
+    } else {
+        printC(x, y+8, "Opcion no valida.\n\n");
+    }
+
+    system("pause");
+}
+
+void Utilidades::eliminarProductoM(Almacen &almacen) {
+    int x = 40, y = 29;
+    int id;
+
+    printC(x, y, "Ingrese el ID del Producto a eliminar: ");
+    cin >> id;
+
+    if (almacen.verificarIdEnProductos(id)) {
+        almacen.eliminarProducto(id);
+        printC(x, y+2, "Producto eliminado exitosamente!\n\n");
+    } else {
+        printC(x, y+2, "ERROR: No se encontro el Producto con ese ID.\n\n");
+    }
+
+    system("pause");
+}
+
 //// FUNCION GOTO PARA COLOCAR LAS COORDENADAS DEL MENU ////
 void Utilidades::gotoxy(int x, int y)
 {
@@ -320,6 +447,17 @@ void Utilidades::gotoxy(int x, int y)
 	dwPos.X = x;
 	dwPos.Y = y;
 	SetConsoleCursorPosition(hcon, dwPos);
+}
+
+void Utilidades::printC(int x, int y, string text) {
+    gotoxy(x, y);
+    cout << text;
+}
+
+void Utilidades::printProducto(int x, int y, Producto* p) {
+    gotoxy(x, y);
+    cout << "ID: " << p->obID() << "\tNombre: " << p->obNombre() << "\tCantidad: "
+		<< p->obCantidad() << "\tPrecio: " << p->obPrecio() << endl;
 }
 
 // Funcion para cambiar el color de texto
