@@ -36,6 +36,7 @@ class Utilidades
 		void gotoxy(int, int);
 		void printC(int, int, string);
 		void printProducto(int, int, Producto*);
+		void printProducto2(int, int, Producto*);
 		void cambiarColorTexto(int);
 };
 

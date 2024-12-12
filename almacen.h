@@ -15,7 +15,6 @@ class Almacen {
 		
 		void insertarOrdenadoPorID(Producto &nuevoProducto);
 		void actualizarIndiceNombre();
-		vector<Producto*> encontrarPorInicioNombre(string nombrePrefijo);
     
 	public:
 		Almacen();
@@ -23,12 +22,15 @@ class Almacen {
 		int buscarPorID(int idBuscado);
 		Producto* buscarPorNombre(string nombreBuscado);
 		Producto* buscarPorIDs(int id);
+		vector<Producto*> encontrarPorInicioNombre(string nombrePrefijo);
+		vector<Producto*> productosConBajoStock(int stock);
+		vector<Producto> obtenerProductos();
 		void cargarDesdeArchivo(string nArchivo);
 		void guardarEnArchivo(string nArchivo);
 		void cambiarNombreArchivo(string nuevoNombre);
 		void agregarProducto(Producto &producto);
 		void eliminarProducto(int id);
-    	void mostrarProductos();
+		void mostrarProductos();
     	void mostrarProducto(int pos);
     	void mostrarAlgunosProductos(vector<Producto*> productos2);
     	void actualizarPrecioProducto(int id, float nuevoPrecio);
