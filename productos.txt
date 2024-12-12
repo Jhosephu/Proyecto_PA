@@ -16,12 +16,12 @@
 16 14 3.95 Mayonesa Light Hellmann's
 17 22 2.80 Ketchup Heinz
 18 16 2.65 Mostaza Francesa
-19 30 3.50 Pasta Espagueti Barilla
+19 3 3.50 Pasta Espagueti Barilla
 20 20 5.10 Arroz Integral Tio Jorge
 21 25 3.30 Frijoles Negros La Costeña
 22 48 1.50 Agua Mineral Ciel
 23 36 2.25 Refresco Cola Normal
-24 24 3.75 Jugo Naranja Del Valle
+24 4 3.75 Jugo Naranja Del Valle
 25 20 4.50 Cerveza Lager Corona
 26 18 3.25 Pan Blanco Wonder
 27 15 4.90 Cereal Integral Kellogg's
@@ -29,7 +29,7 @@
 29 12 4.25 Mermelada Fresa Bonne Maman
 30 10 6.50 Miel Natural
 31 16 3.80 Chocolate en Polvo Nestlé
-32 22 4.75 Leche Descremada Alpura
+32 2 4.75 Leche Descremada Alpura
 33 14 3.95 Crema Batida
 34 18 4.60 Queso Cottage Light
 35 12 8.50 Jamón Serrano Importado
@@ -38,9 +38,9 @@
 38 15 4.75 Aceitunas Verdes
 39 30 3.25 Atún Desmenuzado
 40 22 3.60 Sardinas en Lata
-41 36 5.50 Papel Higiénico Scotch
+41 6 5.50 Papel Higiénico Scotch
 42 24 4.25 Toallas de Papel
-43 15 6.75 Detergente Líquido Ariel
+43 5 6.75 Detergente Líquido Ariel
 44 20 3.90 Jabón de Baño Dove
 45 12 5.25 Shampoo Pantene
 46 18 3.50 Pasta Dental Colgate
@@ -53,7 +53,7 @@
 53 30 2.50 Sopa Instantánea Maruchan
 54 22 3.75 Palomitas de Maíz
 55 18 3.40 Papas Fritas Paquete
-56 15 4.25 Nachos Preparados
+56 1 4.25 Nachos Preparados
 57 40 1.50 Chicles de Menta
 58 25 3.90 Chocolate con Almendras
 59 30 2.75 Gomitas de Frutas
@@ -71,7 +71,7 @@
 71 18 4.40 Crema para Cocinar
 72 20 3.30 Gelatina sin Sabor
 73 15 2.50 Polvos para Hornear
-74 12 3.90 Polvo para Preparar Pastel
+74 2 3.90 Polvo para Preparar Pastel
 75 22 3.25 Chiles en Conserva
 76 25 2.75 Elote en Lata
 77 30 3.40 Frijoles Refritos
@@ -88,17 +88,17 @@
 88 16 3.80 Crema Agria
 89 25 7.50 Huevo Orgánico
 90 12 5.25 Leche de Almendras
-91 18 4.75 Yogurt Griego
+91 8 4.75 Yogurt Griego
 92 20 5.40 Queso Mozzarella
 93 30 3.90 Tomate Cherry
 94 25 2.75 Lechuga Romana
 95 20 2.50 Pepino Fresco
 96 35 1.80 Zanahoria
-97 40 2.25 Cebolla Blanca
+97 18 2.25 Cebolla Blanca
 98 15 4.50 Aguacate
 99 45 2.10 Plátano Maduro
-100 50 3.25 Manzana Roja
-101 55 2.75 Naranja Valencia
+100 10 3.25 Manzana Roja
+101 5 2.75 Naranja Valencia
 102 20 4.25 Piña Fresca
 103 25 5.50 Uvas Verdes
 104 60 1.50 Limón Mexicano
