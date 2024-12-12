@@ -123,60 +123,72 @@ void Utilidades::reporteConsultas() {
 }
 
 void Utilidades::operacioneVentas() {
-	vector<Producto> catalogo;
+	Almacen almacen;
+    almacen.cargarDesdeArchivo();
+    Transacciones transacciones;
+    Venta venta;
     int opcion = 0;
     do {
         limpiarPantalla();
         cout << "========= MENU DE VENTAS =========\n";
         cout << "1. Registrar una Venta\n";
         cout << "2. Emitir Comprobante\n";
-        cout << "3. Actualizar Stock\n";
+        cout << "3. Actualizar Stock para devoluciones\n";
         cout << "4. Regresar al Menu Principal\n";
         cout << "==================================\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
-		Transacciones transaccion;
+		
         switch (opcion) {
             case 1:
 				do{
-					int id, cantidad, productoId;
-                	string fecha;
-                	cout << "Ingrese el ID de la venta: ";
-                	cin >> id;
-                	cout << "Ingrese la fecha de la venta (YYYY-MM-DD): ";
-                	cin >> fecha;
-					Venta venta(id, fecha);
-					cout << "Seleccione un producto:\n";
-                	for (size_t i = 0; i < catalogo.size(); ++i) {
-                    	cout << i + 1 << ". " << catalogo[i].obNombre() 
-                        	 << " - " << catalogo[i].obPrecio() 
-                        	 << " USD (" << catalogo[i].obCantidad() << " en stock)" << endl;
-                	}
-                	cout << "Ingrese el numero del producto: ";
-                	cin >> productoId;
-                	cout << "Ingrese la cantidad: ";
-                	cin >> cantidad;
-                	venta.agregarProducto(catalogo[productoId - 1], cantidad);
-                	cout << "Producto agregado a la venta.\n";
+					int idProducto, cantidad, idVenta;
+				    string fecha;
+					vector<Producto> productos;
+				    cout << "Ingrese el ID de la venta: ";
+				    cin >> idVenta;
+				    cout << "Ingrese la fecha de la venta: ";
+				    cin >> fecha;
+				    
+				    cout << "Ingrese el ID del producto a vender: ";
+				    cin >> idProducto;
+				    cout << "Ingrese la cantidad: ";
+				    cin >> cantidad;
+					
+				    int posProducto = almacen.buscarPorID(idProducto);
+				    if (posProducto != -1) {
+				        Producto producto = almacen.obtenerProductoPorID(idProducto);
+				        Venta venta(idVenta, producto, fecha);
+				        if (producto.obCantidad() >= cantidad) {
+				            venta.agregarProducto(producto, cantidad);
+				            transacciones.registrarVenta(venta);
+				            almacen.reducirCantidadProducto(idProducto, cantidad);
+				            cout << "Venta registrada exitosamente.\n";
+				        } else {
+				            cout << "Cantidad insuficiente en stock.\n";
+				        }
+				    } else {
+				        cout << "Producto no encontrado.\n";
+				    }
 				}while(0);
+				system("PAUSE");
                 break;
             case 2:
             	do{
-                	cout << "\nEmitir Comprobante:\n";
-                	int idVenta;
-                	cout << "Ingrese el ID de la venta para emitir el comprobante: ";
-                	cin >> idVenta;
-               		Venta* venta = transaccion.buscarVentaPorId(idVenta);
-                	if (venta) {
-                    	venta->mostrarVenta();
-                	}
+				    int idVenta;
+				    cout << "Ingrese el ID de la venta para emitir comprobante: ";
+				    cin >> idVenta;
+				
+				    Venta *ventas = transacciones.buscarVentaPorId(idVenta);
+				    if (ventas) {
+				        ventas->mostrarComprobante();
+				    }
             	}while(0);
+            	system("PAUSE");
                 break;
             case 3:
-            	do{
-                	cout << "\nActualizar Stock basado en ventas:\n";
-                	transaccion.actualizarStockVentas();
-            	}while(0);
+				venta.actualizarStock();
+            	system("PAUSE");
 				break; 
             case 4:
                 cout << "Regresando al Menu Principal...\n";

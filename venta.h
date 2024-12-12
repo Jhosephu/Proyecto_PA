@@ -12,9 +12,12 @@ class Venta {
         vector<Producto> productos; // Aquí se usan nombres de productos para simplificar
         float total;
         string fecha;
+        int unidades;
 
     public:
-        Venta(int, string);
+    	Venta();
+    	
+        Venta(int, Producto p, string);
 
         int obtenerId() const {
             return id;
@@ -31,7 +34,7 @@ class Venta {
 		void agregarProducto(Producto p, int cantidad);
         void emitirComprobante() const;
         void actualizarStock();
-        void mostrarVenta();
+		void mostrarComprobante();
 };
 
 #endif

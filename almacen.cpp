@@ -15,6 +15,7 @@ Almacen::Almacen(){
 Almacen::Almacen(string nA) : nombreArchivo(nA) {}
 
 void Almacen::cargarDesdeArchivo(){
+	cout<<"si"<<endl;
 	ifstream archivo(nombreArchivo);
 	
 	if(!archivo.is_open()){
@@ -149,5 +150,10 @@ void Almacen::reducirCantidadProducto(int id, int cantidad) {
 	} else {
 		cout << "ERROR: No se encontro el Producto" << endl;
 	}
+}
+
+Producto Almacen::obtenerProductoPorID(int id) {
+    int pos = buscarPorID(id);
+	return productos[pos];
 }
 

@@ -9,10 +9,6 @@ class Almacen {
 	private:
 		vector<Producto> productos;
 		string nombreArchivo;
-		
-		void insertarOrdenadoPorID(Producto &nuevoProducto);
-    	int buscarPorID(int idBuscado);
-    	
 	public:
 		Almacen();
 		Almacen(string nA);
@@ -25,6 +21,9 @@ class Almacen {
     	void actualizarPrecioProducto(int id, float nuevoPrecio);
     	void aumentarCantidadProducto(int id, int cantidad);
 		void reducirCantidadProducto(int id, int cantidad);
+		void insertarOrdenadoPorID(Producto &nuevoProducto);
+    	int buscarPorID(int idBuscado);
+    	Producto obtenerProductoPorID(int id);
 };
 
 #endif

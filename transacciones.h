@@ -15,7 +15,6 @@ class Transacciones {
         void registrarVenta(Venta venta);
         void listarVentas();
         Venta* buscarVentaPorId(int id);
-        void actualizarStockVentas();
 };
 
 #endif
