@@ -532,7 +532,6 @@ void Utilidades::printProducto(int x, int y, Producto* p) {
     gotoxy(40,19);
     cambiarColorTexto(colorBordes);
     cout << "===================================" << endl;	
-
 }
 
 // Funcion para cambiar el color de texto
