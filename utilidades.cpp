@@ -1,5 +1,8 @@
 #include "utilidades.h"
-
+#include "producto.h"
+#include "almacen.h"
+#include "venta.h"
+#include "transacciones.h"
 #include <iostream>
 #include <cstdlib> // Para usar system()
 using namespace std;
@@ -23,6 +26,7 @@ void Utilidades::limpiarPantalla() {
 
 void Utilidades::mostrarMenuPrincipal() {
     int opcion = 0;
+    
     do {
         limpiarPantalla();
         cout << "========= MENU PRINCIPAL =========\n";
@@ -119,6 +123,7 @@ void Utilidades::reporteConsultas() {
 }
 
 void Utilidades::operacioneVentas() {
+	vector<Producto> catalogo;
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -133,14 +138,48 @@ void Utilidades::operacioneVentas() {
 
         switch (opcion) {
             case 1:
-                cout << "Opcion de Registrar una Venta seleccionada.\n"; // funcion no agregada todavia
+				do{
+					int id, cantidad, productoId;
+                	string fecha;
+                	cout << "Ingrese el ID de la venta: ";
+                	cin >> id;
+                	cout << "Ingrese la fecha de la venta (YYYY-MM-DD): ";
+                	cin >> fecha;
+					Venta venta(id, fecha);
+					cout << "Seleccione un producto:\n";
+                	for (size_t i = 0; i < catalogo.size(); ++i) {
+                    	cout << i + 1 << ". " << catalogo[i].obNombre() 
+                        	 << " - " << catalogo[i].obPrecio() 
+                        	 << " USD (" << catalogo[i].obCantidad() << " en stock)" << endl;
+                	}
+                	cout << "Ingrese el numero del producto: ";
+                	cin >> productoId;
+                	cout << "Ingrese la cantidad: ";
+                	cin >> cantidad;
+                	venta.agregarProducto(catalogo[productoId - 1], cantidad);
+                	cout << "Producto agregado a la venta.\n";
+				}while(0);
                 break;
             case 2:
-                cout << "Opcion de Emitir Comprobante seleccionada.\n"; // funcion no agregada todavia
+            	do{
+            		Transacciones transaccion;
+                	cout << "\nEmitir Comprobante:\n";
+                	int idVenta;
+                	cout << "Ingrese el ID de la venta para emitir el comprobante: ";
+                	cin >> idVenta;
+               		Venta* venta = transaccion.buscarVentaPorId(idVenta);
+                	if (venta) {
+                    	venta->mostrarVenta();
+                	}
+            	}while(0);
                 break;
             case 3:
-                cout << "Opcion de Actualizar Stock seleccionada.\n"; // funcion no agregada todavia
-                break; 
+            	do{
+            		Transacciones transaccion;
+                	cout << "\nActualizar Stock basado en ventas:\n";
+                	transaccion.actualizarStockVentas();
+            	}while(0);
+				break; 
             case 4:
                 cout << "Regresando al Menu Principal...\n";
                 break;

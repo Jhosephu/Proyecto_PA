@@ -4,39 +4,34 @@
 
 using namespace std;
 
-Venta::Venta(int i, vector<Producto> p, string f){
-	id=i;
-	productos=p;
-	fecha=f;
-	pendiente=true;
-	total=0;
-    calcularTotal(productos);
+Venta::Venta(int i, string f){
+	id = i;
+    fecha = f;
 }
 
-void Venta::calcularTotal(vector<Producto> productos) {
-	total = 0;
-   	for (size_t i = 0; i < productos.size(); ++i) {
-        total += productos[i].obPrecio();
-    }
+void Venta::agregarProducto(Producto p, int cantidad) {
+    vector<Producto> productoParaVenta;
+	productoParaVenta[id] = p;  // Copia para reducir stock de la clase Producto
+    productoParaVenta[id].reducirCantidad(cantidad);
+    productoParaVenta.push_back(p);
+    total += p.obPrecio() * cantidad;
 }
 
-void Venta::cambiarEstado(bool estado) {
-    pendiente = estado;
-}
-
-void Venta::mostrarDatos() {
+void Venta::mostrarVenta() {
     cout << "Venta ID: " << id << endl;
     cout << "Fecha: " << fecha << endl;
-    cout << "Estado: " << (pendiente ? "Pendiente" : "Finalizada") << endl;
     cout << "Total: " << total << endl;
-    cout << "Productos:" << endl;
-    for (size_t i = 0; i < productos.size(); ++i) {
-        cout << "- " << productos[i].obNombre() << ": " << productos[i].obPrecio() << endl;
+    cout << "Productos: " << endl;
+    for (auto& producto : productos) {
+		cout << "- " << producto.obNombre() << ": " 
+             << producto.obPrecio() << endl;
     }
 }
 
-string Venta::obtenerFecha() {
-    	return fecha;
+void Venta::actualizarStock() {
+    for (auto& producto : productos) {
+        producto.reducirCantidad(1); // Ejemplo: Reducir en 1 el stock de cada producto
+    }
 }
 
 

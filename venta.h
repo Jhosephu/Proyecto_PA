@@ -9,17 +9,29 @@ using namespace std;
 class Venta {
     private:
         int id;
-        vector<Producto> productos;
+        vector<Producto> productos; // Aquí se usan nombres de productos para simplificar
         float total;
-        bool pendiente;
         string fecha;
-    
+
     public:
-        Venta(int, vector<Producto>, string);
-        void calcularTotal(vector<Producto>);
-        void cambiarEstado(bool);             
-        void mostrarDatos();                  
-        string obtenerFecha();                
+        Venta(int, string);
+
+        int obtenerId() const {
+            return id;
+        }
+
+        string obtenerFecha() const {
+            return fecha;
+        }
+
+        float obtenerTotal() const {
+            return total;
+        }
+		
+		void agregarProducto(Producto p, int cantidad);
+        void emitirComprobante() const;
+        void actualizarStock();
+        void mostrarVenta();
 };
 
 #endif
