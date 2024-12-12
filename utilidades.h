@@ -17,8 +17,14 @@ class Utilidades
 		void mostrarMenuPrincipal(Almacen &almacen);
 		void gestionarProductos(Almacen &almacen);
 		void reporteConsultas(Almacen &almacen);
-		void operacioneVentas();
+		void operacioneVentas(Almacen &almacen);
 		void archivo();
+		//Funciones EstadoAlmacen
+		void reporteEstadoDelAlmacen(Almacen &almacen);
+		void reporteProductosConBajoStock(Almacen &almacen);
+		void reporteTodosLosProductos(Almacen &almacen);
+		void reporteProductosOrdenadosPorPrecio(Almacen &almacen);
+		void reporteProductosPorPrefijo(Almacen &almacen);
 		// Funciones gestionarProductos
 		void agregarProductoM(Almacen &almacen);
 		void modificarProductoM(Almacen &almacen);
@@ -29,6 +35,7 @@ class Utilidades
 		void gotoxy(int, int);
 		void printC(int, int, string);
 		void printProducto(int, int, Producto*);
+		void printProducto2(int, int, Producto*);
 		void cambiarColorTexto(int);
 };
 
