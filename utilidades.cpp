@@ -182,18 +182,18 @@ void Utilidades::reporteConsultas(Almacen &almacen, Transacciones &transaccion) 
         cout << "1. Estado del Almacen\n";
         gotoxy(45, 13);
         cout << "2. Estado de Ventas\n";
-        gotoxy(45, 17);
-        cout << "4. Regresar al Menu Principal\n";
-        gotoxy(40, 21);
+        gotoxy(45, 15);
+        cout << "3. Regresar al Menu Principal\n";
+        gotoxy(40, 19);
         cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
-        gotoxy(45, 23);
+        gotoxy(45, 21);
         cambiarColorTexto(colorTitulo);
         cout << "Seleccione una opcion: ";
-        gotoxy(40, 25);
+        gotoxy(40, 23);
         cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
-        gotoxy(67, 23);
+        gotoxy(67, 21);
         cambiarColorTexto(colorOpciones);
         cin >> opcion;
 
@@ -212,7 +212,7 @@ void Utilidades::reporteConsultas(Almacen &almacen, Transacciones &transaccion) 
             default:
                 cout << "Opcion no valida. Intente nuevamente.\n";
         }
-    } while (opcion != 4);
+    } while (opcion != 3);
 }
 
 
