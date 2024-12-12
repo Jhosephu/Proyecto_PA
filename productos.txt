@@ -1,151 +1,150 @@
-1 24 5.5 Leche Entera Lala
+1 24 5.50 Leche Entera Lala
 2 12 3.25 Pan Integral Bimbo
 3 30 4.75 Arroz Blanco Diana
-4 60 6 Huevos Blancos Granja
+4 60 6.00 Huevos Blancos Granja
 5 15 4.25 Aceite Vegetal Mazola
-6 40 2.5 Sal Refinada Morton
+6 40 2.50 Sal Refinada Morton
 7 25 3.75 Azúcar Blanca Blanca Flor
-8 10 7.5 Café Molido Supremo
-9 18 2.9 Chocolate Tableta Nestlé
-10 20 4.8 Mantequilla Cremosa Land O Lakes
-11 35 3.6 Yogurt Natural Danone
+8 10 7.50 Café Molido Supremo
+9 18 2.90 Chocolate Tableta Nestlé
+10 20 4.80 Mantequilla Cremosa Land O Lakes
+11 35 3.60 Yogurt Natural Danone
 12 22 5.25 Queso Cheddar Kraft
 13 16 6.75 Jamón de Pavo Oscar Mayer
-14 12 4.5 Salchicha Frankfurt
-15 28 3.4 Atún en Lata Dolores
+14 12 4.50 Salchicha Frankfurt
+15 28 3.40 Atún en Lata Dolores
 16 14 3.95 Mayonesa Light Hellmann's
-17 22 2.8 Ketchup Heinz
+17 22 2.80 Ketchup Heinz
 18 16 2.65 Mostaza Francesa
-19 3 3.5 Pasta Espagueti Barilla
-20 20 5.1 Arroz Integral Tio Jorge
-21 25 3.3 Frijoles Negros La Costeña
-22 48 1.5 Agua Mineral Ciel
+19 3 3.50 Pasta Espagueti Barilla
+20 20 5.10 Arroz Integral Tio Jorge
+21 25 3.30 Frijoles Negros La Costeña
+22 48 1.50 Agua Mineral Ciel
 23 36 2.25 Refresco Cola Normal
 24 4 3.75 Jugo Naranja Del Valle
-25 20 4.5 Cerveza Lager Corona
+25 20 4.50 Cerveza Lager Corona
 26 18 3.25 Pan Blanco Wonder
-27 15 4.9 Cereal Integral Kellogg's
-28 30 2.6 Galletas Chocolate Marinela
+27 15 4.90 Cereal Integral Kellogg's
+28 30 2.60 Galletas Chocolate Marinela
 29 12 4.25 Mermelada Fresa Bonne Maman
-30 10 6.5 Miel Natural
-31 16 3.8 Chocolate en Polvo Nestlé
+30 10 6.50 Miel Natural
+31 16 3.80 Chocolate en Polvo Nestlé
 32 2 4.75 Leche Descremada Alpura
 33 14 3.95 Crema Batida
-34 18 4.6 Queso Cottage Light
-35 12 8.5 Jamón Serrano Importado
-36 20 2.9 Salsa de Tomate Heinz
-37 25 2.4 Vinagre Blanco
+34 18 4.60 Queso Cottage Light
+35 12 8.50 Jamón Serrano Importado
+36 20 2.90 Salsa de Tomate Heinz
+37 25 2.40 Vinagre Blanco
 38 15 4.75 Aceitunas Verdes
 39 30 3.25 Atún Desmenuzado
-40 22 3.6 Sardinas en Lata
-41 6 5.5 Papel Higiénico Scotch
+40 22 3.60 Sardinas en Lata
+41 6 5.50 Papel Higiénico Scotch
 42 24 4.25 Toallas de Papel
 43 5 6.75 Detergente Líquido Ariel
-44 20 3.9 Jabón de Baño Dove
+44 20 3.90 Jabón de Baño Dove
 45 12 5.25 Shampoo Pantene
-46 18 3.5 Pasta Dental Colgate
-47 15 2.8 Cepillo de Dientes
-48 10 4.6 Desodorante Old Spice
+46 18 3.50 Pasta Dental Colgate
+47 15 2.80 Cepillo de Dientes
+48 10 4.60 Desodorante Old Spice
 49 14 5.75 Champú Head & Shoulders
-50 12 5.4 Crema Corporal Nivea
+50 12 5.40 Crema Corporal Nivea
 51 20 3.25 Arroz con Leche Premix
-52 25 3.6 Puré de Papas Instantáneo
-53 30 2.5 Sopa Instantánea Maruchan
+52 25 3.60 Puré de Papas Instantáneo
+53 30 2.50 Sopa Instantánea Maruchan
 54 22 3.75 Palomitas de Maíz
-55 18 3.4 Papas Fritas Paquete
+55 18 3.40 Papas Fritas Paquete
 56 1 4.25 Nachos Preparados
-57 40 1.5 Chicles de Menta
-58 25 3.9 Chocolate con Almendras
+57 40 1.50 Chicles de Menta
+58 25 3.90 Chocolate con Almendras
 59 30 2.75 Gomitas de Frutas
 60 35 2.25 Caramelos Surtidos
-61 20 4.5 Cereal para Desayuno
-62 25 3.8 Avena en Hojuelas
-63 15 3.6 Margarina Light
-64 18 2.9 Salsa Picante
+61 20 4.50 Cereal para Desayuno
+62 25 3.80 Avena en Hojuelas
+63 15 3.60 Margarina Light
+64 18 2.90 Salsa Picante
 65 12 4.25 Pepinillos en Vinagre
 66 20 3.75 Té Negro
-67 16 4.5 Té Verde
+67 16 4.50 Té Verde
 68 14 5.25 Café Instantáneo
-69 30 2.6 Caldo de Pollo
-70 25 2.8 Caldo de Res
-71 18 4.4 Crema para Cocinar
-72 20 3.3 Gelatina sin Sabor
-73 15 2.5 Polvos para Hornear
-74 2 3.9 Polvo para Preparar Pastel
+69 30 2.60 Caldo de Pollo
+70 25 2.80 Caldo de Res
+71 18 4.40 Crema para Cocinar
+72 20 3.30 Gelatina sin Sabor
+73 15 2.50 Polvos para Hornear
+74 2 3.90 Polvo para Preparar Pastel
 75 22 3.25 Chiles en Conserva
 76 25 2.75 Elote en Lata
-77 30 3.4 Frijoles Refritos
-78 35 2.6 Tortillas de Maíz
-79 40 3.1 Tortillas de Harina
-80 15 6.5 Carne Molida
+77 30 3.40 Frijoles Refritos
+78 35 2.60 Tortillas de Maíz
+79 40 3.10 Tortillas de Harina
+80 15 6.50 Carne Molida
 81 20 7.25 Pollo Entero
 82 12 8.75 Pescado Fresco
-83 10 12.5 Camarones
+83 10 12.50 Camarones
 84 18 5.75 Chorizo
 85 15 6.25 Tocino
-86 20 4.9 Salchicha Ahumada
-87 22 4.6 Queso Fresco
-88 16 3.8 Crema Agria
-89 25 7.5 Huevo Orgánico
+86 20 4.90 Salchicha Ahumada
+87 22 4.60 Queso Fresco
+88 16 3.80 Crema Agria
+89 25 7.50 Huevo Orgánico
 90 12 5.25 Leche de Almendras
 91 8 4.75 Yogurt Griego
-92 20 5.4 Queso Mozzarella
-93 30 3.9 Tomate Cherry
+92 20 5.40 Queso Mozzarella
+93 30 3.90 Tomate Cherry
 94 25 2.75 Lechuga Romana
-95 20 2.5 Pepino Fresco
-96 35 1.8 Zanahoria
+95 20 2.50 Pepino Fresco
+96 35 1.80 Zanahoria
 97 18 2.25 Cebolla Blanca
-98 15 4.5 Aguacate
-99 45 2.1 Plátano Maduro
+98 15 4.50 Aguacate
+99 45 2.10 Plátano Maduro
 100 10 3.25 Manzana Roja
 101 5 2.75 Naranja Valencia
 102 20 4.25 Piña Fresca
-103 25 5.5 Uvas Verdes
-104 60 1.5 Limón Mexicano
+103 25 5.50 Uvas Verdes
+104 60 1.50 Limón Mexicano
 105 18 3.75 Papaya
-106 15 6.5 Sandía
+106 15 6.50 Sandía
 107 12 5.25 Melón
 108 22 4.75 Durazno
-109 25 3.6 Pera
+109 25 3.60 Pera
 110 20 5.25 Kiwi
-111 15 7.5 Frambuesa
+111 15 7.50 Frambuesa
 112 10 8.75 Arándanos
-113 30 4.9 Fresa
+113 30 4.90 Fresa
 114 25 5.25 Mora
 115 18 3.75 Coco Rallado
-116 12 6.5 Nuez Picada
+116 12 6.50 Nuez Picada
 117 15 7.25 Almendra Tostada
 118 20 4.25 Pasas
-119 25 3.5 Semilla de Girasol
+119 25 3.50 Semilla de Girasol
 120 22 4.75 Semilla de Calabaza
 121 16 5.25 Chocolate para Mesa
-122 12 4.5 Vainilla Líquida
+122 12 4.50 Vainilla Líquida
 123 15 3.75 Canela Molida
-124 18 2.9 Orégano
+124 18 2.90 Orégano
 125 20 3.25 Perejil Fresco
-126 16 3.6 Albahaca Seca
-127 14 3.4 Comino Molido
+126 16 3.60 Albahaca Seca
+127 14 3.40 Comino Molido
 128 15 4.25 Pimienta Negra
-129 25 3.5 Sal de Mar
+129 25 3.50 Sal de Mar
 130 22 3.75 Condimento para Pizza
-131 30 2.6 Consomé en Polvo
+131 30 2.60 Consomé en Polvo
 132 25 3.25 Polvo para Enchiladas
-133 18 4.5 Marinada Lista
-134 20 3.9 Salsa BBQ
+133 18 4.50 Marinada Lista
+134 20 3.90 Salsa BBQ
 135 16 3.75 Salsa Inglesa
 136 22 3.25 Chile en Polvo
-137 25 3.5 Ajo en Polvo
-138 20 3.4 Cebolla en Polvo
+137 25 3.50 Ajo en Polvo
+138 20 3.40 Cebolla en Polvo
 139 15 3.75 Páprika
 140 12 4.25 Curry en Polvo
-141 10 8.5 Aceite de Oliva
+141 10 8.50 Aceite de Oliva
 142 15 5.75 Vinagre Balsámico
 143 12 6.25 Aceite de Coco
-144 10 7.5 Aceite de Ajonjolí
-145 20 3.9 Salsa de Soya
+144 10 7.50 Aceite de Ajonjolí
+145 20 3.90 Salsa de Soya
 146 16 5.25 Mole Poblano Preparado
 147 18 4.75 Pozole Preparado
-148 25 3.5 Chile Poblano
+148 25 3.50 Chile Poblano
 149 30 2.75 Chile Jalapeño
 150 22 4.25 Chiles en Escabeche
-151 15 2.5 Calabazas

@@ -1,8 +1,8 @@
 #include "utilidades.h"
 #include "producto.h"
 #include "venta.h"
-#include "transacciones.h"
 #include "almacen.h"
+#include "transacciones.h"
 
 #include<stdlib.h>
 #include<windows.h>
@@ -30,7 +30,7 @@ void Utilidades::limpiarPantalla() {
 #endif
 }
 
-void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
+void Utilidades::mostrarMenuPrincipal(Almacen &almacen, Transacciones &transaccion) {
 	
     int opcion = 0;
     do {
@@ -77,13 +77,13 @@ void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
                 gestionarProductos(almacen);
                 break;
             case 2:
-                reporteConsultas(almacen);
+                reporteConsultas(almacen, transaccion);
                 break;
             case 3:
-                operacioneVentas(almacen);
+                operacioneVentas(almacen, transaccion);
                 break;
             case 4:
-                archivo(almacen);
+                archivo();
                 break;
             case 5:
             	cout << "\n";
@@ -162,7 +162,7 @@ void Utilidades::gestionarProductos(Almacen &almacen) {
     } while (opcion != 5);
 }
 
-void Utilidades::reporteConsultas(Almacen &almacen) {
+void Utilidades::reporteConsultas(Almacen &almacen, Transacciones &transaccion) {
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -176,16 +176,14 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "          MENÚ DE CONSULTAS          \n";
+        cout << "          MENU DE CONSULTAS          \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Estado del Almacen\n";
         gotoxy(45, 13);
         cout << "2. Estado de Ventas\n";
-        gotoxy(45, 15);
-        cout << "3. Resumen de Ventas\n";
         gotoxy(45, 17);
-        cout << "4. Regresar al Menú Principal\n";
+        cout << "4. Regresar al Menu Principal\n";
         gotoxy(40, 21);
         cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
@@ -204,12 +202,11 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
                 reporteEstadoDelAlmacen(almacen);
                 break;
             case 2:
-                cout << "Opcion de Estado de Ventas seleccionada.\n"; // funcion no agregada todavia
+                transaccion.listarVentas();
+                system("PAUSE");
+				 // funcion no agregada todavia
                 break;
             case 3:
-                cout << "Opcion de Resumen de Ventas seleccionada.\n"; // funcion no agregada todavia
-                break;
-            case 4:
                 cout << "Regresando al Menu Principal...\n";
                 break;
             default:
@@ -219,11 +216,10 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
 }
 
 
-void Utilidades::operacioneVentas() {
+void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) {
 	//Almacen almacen;
     //almacen.cargarDesdeArchivo();
 	Venta venta;
-    Transacciones transacciones;
     int opcion = 0;
     do {
         limpiarPantalla();
@@ -281,8 +277,8 @@ void Utilidades::operacioneVentas() {
 				        Producto producto = almacen.obtenerProductoPorID(idProducto);
 				        Venta venta(idVenta, producto, fecha);
 				        if (producto.obCantidad() >= cantidad) {
-				            venta.agregarProducto(producto, cantidad);
-				            transacciones.registrarVenta(venta);
+				            venta.agregarProducto(producto, cantidad, idVenta);
+				            transaccion.registrarVenta(venta);
 				            almacen.reducirCantidadProducto(idProducto, cantidad);
 				            cout << "Venta registrada exitosamente.\n";
 				        } else {
@@ -300,7 +296,7 @@ void Utilidades::operacioneVentas() {
 				    cout << "Ingrese el ID de la venta para emitir comprobante: ";
 				    cin >> idVenta;
 				
-				    Venta *ventas = transacciones.buscarVentaPorId(idVenta);
+				    Venta *ventas = transaccion.buscarVentaPorId(idVenta);
 				    if (ventas) {
 				        ventas->mostrarComprobante();
 				    }
@@ -320,7 +316,7 @@ void Utilidades::operacioneVentas() {
     } while (opcion != 4);
 }
 
-void Utilidades::archivo(Almacen &almacen) {
+void Utilidades::archivo() {
 	
     int opcion = 0;
     do {
@@ -358,10 +354,10 @@ void Utilidades::archivo(Almacen &almacen) {
 		
         switch (opcion) {
             case 1:
-                cargarDatosDesdeArchivo(almacen);
+                //almacen.; // funcion no agregada todavia
                 break;
             case 2:
-                guardarDatosEnArchivo(almacen);
+                cout << "Opcion de Guardar Datos en Archivo seleccionada.\n"; // funcion no agregada todavia
                 break;
             case 3:
                 cout << "Regresando al Menu Principal...\n";
@@ -564,7 +560,7 @@ void Utilidades::reporteProductosConBajoStock(Almacen &almacen) {
     if (productosBajoStock.empty()) {
         printC(x, y+4, "No hay productos con bajo stock.\n");
     } else {
-        for (int i = 0; i < productosBajoStock.size(); i++) {
+        for (size_t i = 0; i < productosBajoStock.size(); i++) {
             printProducto2(x, y+4+(2*i), productosBajoStock[i]);
         }
     }
@@ -580,7 +576,7 @@ void Utilidades::reporteTodosLosProductos(Almacen &almacen) {
 
     vector<Producto> ps = almacen.obtenerProductos();
     
-    for (int i = 0; i < ps.size(); i++) {
+    for (size_t i = 0; i < ps.size(); i++) {
     	Producto* p = &ps[i];
         printProducto2(x, y+4+(2*i), p);
     }
@@ -604,7 +600,7 @@ void Utilidades::reporteProductosPorPrefijo(Almacen &almacen) {
     if (productosEncontrados.empty()) {
         printC(x, y+6, "No se encontraron productos que coincidan con el prefijo '" + prefijo + "'.\n");
     } else {
-        for (int i = 0; i < productosEncontrados.size(); i++) {
+        for (size_t i = 0; i < productosEncontrados.size(); i++) {
             printProducto2(x, y+6+(2*i), productosEncontrados[i]);
         }
     }
@@ -627,42 +623,10 @@ void Utilidades::reporteProductosOrdenadosPorPrecio(Almacen &almacen) {
     });
 
     // Mostrar los productos ordenados
-    for (int i = 0; i < productosOrdenados.size(); i++) {
+    for (size_t i = 0; i < productosOrdenados.size(); i++) {
     	Producto* p = &productosOrdenados[i];
         printProducto2(x, y+4+(2*i), p);
     }
-
-    system("pause");
-}
-
-// FUNCIOES DE MENU DE ARCHIVOS
-
-void Utilidades::cargarDatosDesdeArchivo(Almacen &almacen) {
-    int x = 40, y = 29;
-    string nombreArchivo;
-
-    printC(x, y, "Ingrese el nombre del archivo para cargar los datos: ");
-    cin.ignore();
-    getline(cin, nombreArchivo);
-
-    almacen.cargarDesdeArchivo(nombreArchivo);
-
-    printC(x, y+2, "Datos cargados exitosamente desde el archivo: " + nombreArchivo + "\n\n");
-
-    system("pause");
-}
-
-void Utilidades::guardarDatosEnArchivo(Almacen &almacen) {
-    int x = 40, y = 29;
-    string nombreArchivo;
-
-    printC(x, y, "Ingrese el nombre del archivo para guardar los datos: ");
-    cin.ignore();
-    getline(cin, nombreArchivo);
-
-    almacen.guardarEnArchivo(nombreArchivo);
-
-    printC(x, y+2, "Datos guardados exitosamente en el archivo: " + nombreArchivo + "\n\n");
 
     system("pause");
 }

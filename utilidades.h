@@ -3,6 +3,7 @@
 
 #include "almacen.h"
 #include "producto.h"
+#include "transacciones.h"
 #include <vector>
 
 using namespace std;
@@ -14,11 +15,11 @@ class Utilidades
 	public:
 		Utilidades();
 		~Utilidades();
-		void mostrarMenuPrincipal(Almacen &almacen);
+		void mostrarMenuPrincipal(Almacen &almacen, Transacciones &transaccion);
 		void gestionarProductos(Almacen &almacen);
-		void reporteConsultas(Almacen &almacen);
-		void operacioneVentas(Almacen &almacen);
-		void archivo(Almacen &almacen);
+		void reporteConsultas(Almacen &almacen, Transacciones &transaccion);
+		void operacioneVentas(Almacen &almacen, Transacciones &transaccion);
+		void archivo();
 		//Funciones EstadoAlmacen
 		void reporteEstadoDelAlmacen(Almacen &almacen);
 		void reporteProductosConBajoStock(Almacen &almacen);
@@ -30,15 +31,11 @@ class Utilidades
 		void modificarProductoM(Almacen &almacen);
 		void buscarProductoM(Almacen &almacen);
 		void eliminarProductoM(Almacen &almacen);
-		// Funciones de archivos
-		void cargarDatosDesdeArchivo(Almacen &almacen);
-		void guardarDatosEnArchivo(Almacen &almacen);
 		// Extras
 		void limpiarPantalla();
 		void gotoxy(int, int);
 		void printC(int, int, string);
 		void printProducto(int, int, Producto*);
-		void printProducto2(int, int, Producto*);
 		void cambiarColorTexto(int);
 };
 

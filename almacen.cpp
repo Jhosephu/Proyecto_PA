@@ -38,19 +38,6 @@ vector<Producto*> Almacen::encontrarPorInicioNombre(string nombrePrefijo) {
 	return productosEncontrados;
 }
 
-vector<Producto*> Almacen::productosConBajoStock(int stock = 5) {
-	std::vector<Producto*> productosEncontrados;
-
-	for (Producto &producto : productos) {
-		// Búsqueda por coincidencia parcial (contiene el nombre)
-		if (producto.obCantidad() <= stock) {
-			productosEncontrados.push_back(&producto);
-		}
-	}
-
-	return productosEncontrados;
-}
-
 Producto* Almacen::buscarPorNombre(string nombreBuscado) {
 	auto it = indiceNombre.find(nombreBuscado);
 	if (it != indiceNombre.end()) {
@@ -59,13 +46,8 @@ Producto* Almacen::buscarPorNombre(string nombreBuscado) {
 	return nullptr;
 }
 
-vector<Producto> Almacen::obtenerProductos() {
-	return productos;
-}
-
 void Almacen::cargarDesdeArchivo(string nArchivo = "") {
-	string archivoAUsar = nArchivo.empty() ? nombreArchivo : nArchivo;
-	ifstream archivo(archivoAUsar);
+	ifstream archivo(nombreArchivo);
 
 	if(!archivo.is_open()) {
 		cout << "ERROR: no se pudo abrir el archivo";
@@ -94,8 +76,7 @@ void Almacen::cargarDesdeArchivo(string nArchivo = "") {
 }
 
 void Almacen::guardarEnArchivo(string nArchivo = "") {
-	string archivoAUsar = nArchivo.empty() ? nombreArchivo : nArchivo;
-	ofstream archivo(archivoAUsar);
+	ofstream archivo(nombreArchivo);
 
 	if(!archivo.is_open()) {
 		cout << "ERROR: no se pudo abrir el archivo";
@@ -177,6 +158,16 @@ void Almacen::eliminarProducto(int id) {
 	int pos = buscarPorID(id);
 	if(pos != -1) {
 		productos.erase(productos.begin()+pos);
+		cout << "Producto eliminado correctamente" << endl;
+		return;
+	} else {
+		cout << "ERROR: No se encontro el Producto" << endl;
+	}
+}
+
+void Almacen::mostrarProductos() {
+	for (Producto &producto : productos) {
+		producto.mostrar();
 	}
 }
 
@@ -187,12 +178,6 @@ void Almacen::mostrarProducto(int pos) {
 void Almacen::mostrarAlgunosProductos(vector<Producto*> productos2) {
 	for (Producto* producto : productos2) {
 		producto->mostrar();
-	}
-}
-
-void Almacen::mostrarProductos(){
-	for (Producto &producto : productos) {
-		producto.mostrar();
 	}
 }
 

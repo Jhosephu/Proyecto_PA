@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [Project]
 FileName=Proyecto 1.dev
 Name=Proyecto 1
@@ -223,8 +222,8 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
-
 =======
+
 [Project]
 FileName=Proyecto 1.dev
 Name=Proyecto 1
@@ -256,7 +255,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=00000000c0000000000000000
-UnitCount=10
+UnitCount=11
 
 [VersionInfo]
 Major=1
@@ -439,5 +438,5 @@ OverrideBuildCmd=0
 BuildCmd=
 <<<<<<< HEAD
 =======
-
 >>>>>>> 3909c50a6d49cd2d082de297b04628eb092cae59
+
