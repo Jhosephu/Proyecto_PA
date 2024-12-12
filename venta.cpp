@@ -41,10 +41,10 @@ void Venta::actualizarStock() {
 	int idProducto, cantidad;
 	cout << "Ingrese el ID del producto para actualizar su cantidad: ";
 	cin >> idProducto;
-	cout << "Ingrese la cantidad a agregar: ";
+	cout << "                                        Ingrese la cantidad a agregar: ";
 	cin >> cantidad;
 	inventario.aumentarCantidadProducto(idProducto, cantidad);
-	cout << "Stock actualizado correctamente.\n";
+	//cout << "Stock actualizado correctamente.\n"; no actualiza o eso pienso
 }
 
 

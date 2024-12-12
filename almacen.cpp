@@ -201,7 +201,7 @@ void Almacen::actualizarPrecioProducto(int id, float nuevoPrecio) {
 	if (pos != -1) {
 		productos[pos].actualizarPrecio(nuevoPrecio);
 	} else {
-		cout << "ERROR: No se encontro el Producto" << endl;
+		cout << "                                        ERROR: No se encontro el Producto" << endl;
 	}
 }
 
@@ -210,7 +210,7 @@ void Almacen::aumentarCantidadProducto(int id, int cantidad) {
 	if (pos != -1) {
 		productos[pos].aumentarCantidad(cantidad);
 	} else {
-		cout << "ERROR: No se encontro el Producto" << endl;
+		cout << "                                        ERROR: No se encontro el Producto" << endl;
 	}
 }
 

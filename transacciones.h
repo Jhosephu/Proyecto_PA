@@ -2,6 +2,8 @@
 #define TRANSACCIONES_H
 #include "venta.h"
 
+
+
 #include <string>
 using namespace std;
 

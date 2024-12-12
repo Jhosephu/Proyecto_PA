@@ -92,7 +92,7 @@ void Utilidades::mostrarMenuPrincipal(Almacen &almacen, Transacciones &transacci
                 almacen.guardarEnArchivo("");
                 break;
             default:
-                cout << "Opción no válida. Intente nuevamente.\n";
+                cout << "Opcion no valida. Intente nuevamente.\n";
         }
     } while (opcion != 5);
 }
@@ -115,7 +115,7 @@ void Utilidades::gestionarProductos(Almacen &almacen) {
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "        MENÚ DE PRODUCTOS         \n";
+        cout << "        MENU DE PRODUCTOS         \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Agregar Producto\n";
@@ -202,6 +202,7 @@ void Utilidades::reporteConsultas(Almacen &almacen, Transacciones &transaccion) 
                 reporteEstadoDelAlmacen(almacen);
                 break;
             case 2:
+            	gotoxy(45,25);
                 transaccion.listarVentas();
                 system("PAUSE");
 				 // funcion no agregada todavia
@@ -233,14 +234,14 @@ void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) 
 		cout << "==================================\n";
 		gotoxy(40, 7);
 		cambiarColorTexto(colorTitulo);
-        cout << "          MENÚ DE VENTAS          \n";
+        cout << "          MENUS DE VENTAS          \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
         cout << "1. Registrar una Venta\n";
         gotoxy(45, 13);
         cout << "2. Emitir Comprobante\n";
         gotoxy(45, 15);
-        cout << "3. Actualizar Stock\n";
+        cout << "3. Actualizar Stock (En proceso)\n";
         gotoxy(45, 17);
         cout << "4. Regresar al Menu Principal\n";
         gotoxy(40, 21);
@@ -259,18 +260,28 @@ void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) 
         switch (opcion) {
             case 1:
 				do{
+					limpiarPantalla();
 					int idProducto, cantidad, idVenta;
 				    string fecha;
 					vector<Producto> productos;
+					gotoxy(40,5);
+					cout << "                       Registrar una Venta                             \n";
+					gotoxy(40,7);
+					cout << "========================================================================\n";
+					gotoxy(45,9);
 				    cout << "Ingrese el ID de la venta: ";
 				    cin >> idVenta;
+				    gotoxy(45,11);
 				    cout << "Ingrese la fecha de la venta: ";
 				    cin >> fecha;
-				    
+				    gotoxy(45,13);
 				    cout << "Ingrese el ID del producto a vender: ";
 				    cin >> idProducto;
+				    gotoxy(45,15);
 				    cout << "Ingrese la cantidad: ";
 				    cin >> cantidad;
+				    gotoxy(40,17);
+				    cout << "========================================================================\n";
 					
 				    int posProducto = almacen.buscarPorID(idProducto);
 				    if (posProducto != -1) {
@@ -280,11 +291,16 @@ void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) 
 				            venta.agregarProducto(producto, cantidad, idVenta);
 				            transaccion.registrarVenta(venta);
 				            almacen.reducirCantidadProducto(idProducto, cantidad);
+				            
+				            gotoxy(45,19);
 				            cout << "Venta registrada exitosamente.\n";
 				        } else {
+				        	
+				        	gotoxy(45,19);
 				            cout << "Cantidad insuficiente en stock.\n";
 				        }
 				    } else {
+				    	gotoxy(45,19);
 				        cout << "Producto no encontrado.\n";
 				    }
 				}while(0);
@@ -292,7 +308,13 @@ void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) 
                 break;
             case 2:
             	do{
+            		limpiarPantalla();
 				    int idVenta;
+				    gotoxy(40,5);
+				    cout << "                          Emitir Comprobante                           \n";
+				    gotoxy(40,7);
+				    cout << "========================================================================\n";
+				    gotoxy(45,9);
 				    cout << "Ingrese el ID de la venta para emitir comprobante: ";
 				    cin >> idVenta;
 				
@@ -304,6 +326,8 @@ void Utilidades::operacioneVentas(Almacen &almacen, Transacciones &transaccion) 
             	system("PAUSE");
                 break;
             case 3:
+            	limpiarPantalla();
+            	gotoxy(40,5);
 				venta.actualizarStock();
             	system("PAUSE");
 				break; 
@@ -331,12 +355,12 @@ void Utilidades::archivo() {
         cout << "=====================================\n";
         gotoxy(40, 7);
         cambiarColorTexto(colorTitulo);
-        cout << "          MENÚ DE ARCHIVOS           \n";
+        cout << "          MENU DE ARCHIVOS           \n";
         gotoxy(45, 11);
         cambiarColorTexto(colorOpciones);
-        cout << "1. Cargar Datos desde Archivo\n";
+        cout << "1. Cargar Datos desde Archivo( EN CONSTRUCCION )\n";
         gotoxy(45, 13);
-        cout << "2. Guardar Datos en Archivo\n";
+        cout << "2. Guardar Datos en Archivo( EN CONSTRUCCION )\n";
         gotoxy(45, 15);
         cout << "3. Regresar al Menu Principal\n";
         gotoxy(40, 19);
@@ -357,9 +381,11 @@ void Utilidades::archivo() {
                 //almacen.; // funcion no agregada todavia
                 break;
             case 2:
+            	gotoxy(45, 25);
                 cout << "Opcion de Guardar Datos en Archivo seleccionada.\n"; // funcion no agregada todavia
                 break;
             case 3:
+            	gotoxy(45, 25);
                 cout << "Regresando al Menu Principal...\n";
                 break;
             default:
@@ -393,7 +419,7 @@ void Utilidades::reporteEstadoDelAlmacen(Almacen &almacen) {
         gotoxy(45, 17);
         cout << "4. Productos Ordenados por Precio\n";
         gotoxy(45, 19);
-        cout << "5. Regresar al Menú de Consultas\n";
+        cout << "5. Regresar al Menu de Consultas\n";
         gotoxy(40, 23);
         cambiarColorTexto(colorBordes);
         cout << "=====================================\n";
@@ -421,7 +447,7 @@ void Utilidades::reporteEstadoDelAlmacen(Almacen &almacen) {
                 reporteProductosOrdenadosPorPrecio(almacen);
                 break;
             case 5:
-                cout << "Regresando al Menú de Consultas...\n";
+                cout << "Regresando al Menu de Consultas...\n";
                 break;
             default:
                 cout << "Opcion no valida. Intente nuevamente.\n";
@@ -481,7 +507,7 @@ void Utilidades::modificarProductoM(Almacen &almacen) {
 
         printC(x, y+6, "Producto modificado exitosamente!\n\n");
     } else {
-        printC(x, y+2, "ERROR: No se encontró el Producto con ese ID.\n\n");
+        printC(x, y+2, "ERROR: No se encontro el Producto con ese ID.\n\n");
     }
 
     system("pause");
@@ -508,7 +534,7 @@ void Utilidades::buscarProductoM(Almacen &almacen) {
             printC(x, y+10, "Producto encontrado:\n");
             printProducto(x, y+12, p);
         } else {
-            printC(x, y+10, "ERROR: No se encontró el Producto con ese ID.\n\n");
+            printC(x, y+10, "ERROR: No se encontro el Producto con ese ID.\n\n");
         }
     } else if (opcion == 2) {
         cin.ignore();
@@ -520,10 +546,10 @@ void Utilidades::buscarProductoM(Almacen &almacen) {
             printC(x, y+10, "Producto encontrado:\n");
             printProducto(x, y+12, producto);
         } else {
-            printC(x, y+10, "ERROR: No se encontró el Producto con ese nombre.\n\n");
+            printC(x, y+10, "ERROR: No se encontro el Producto con ese nombre.\n\n");
         }
     } else {
-        printC(x, y+8, "Opción no válida.\n\n");
+        printC(x, y+8, "Opcion no valida.\n\n");
     }
 
     system("pause");
@@ -661,7 +687,7 @@ void Utilidades::printProducto(int x, int y, Producto* p) {
     cout << "===================================" << endl;
     gotoxy(40,7);
     cambiarColorTexto(colorTitulo);
-    cout << "     INFORMACIÓN DEL PRODUCTO      " << endl;
+    cout << "     INFORMACION DEL PRODUCTO      " << endl;
     gotoxy(40,9);
     cambiarColorTexto(colorBordes);
     cout << "===================================" << endl;
