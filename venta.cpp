@@ -13,7 +13,13 @@ Venta::Venta(int i, Producto p, string f){
     fecha = f;
 }
 
-void Venta::agregarProducto(Producto p, int cantidad) {
+void Venta::agregarProducto(Producto p, int cantidad, int idVenta) {
+	if (this->id == idVenta) {
+        // Si el ID de venta no coincide, reiniciar la venta
+        this->id = idVenta;
+        this->productos.clear(); // Limpiar los productos anteriores
+        this->total = 0;         // Reiniciar el total
+    }
 	productos.push_back(p);
     unidades = cantidad;
     total += p.obPrecio() * unidades;
@@ -35,10 +41,10 @@ void Venta::actualizarStock() {
 	int idProducto, cantidad;
 	cout << "Ingrese el ID del producto para actualizar su cantidad: ";
 	cin >> idProducto;
-	cout << "Ingrese la cantidad a agregar: ";
+	cout << "                                        Ingrese la cantidad a agregar: ";
 	cin >> cantidad;
 	inventario.aumentarCantidadProducto(idProducto, cantidad);
-	cout << "Stock actualizado correctamente.\n";
+	//cout << "Stock actualizado correctamente.\n"; no actualiza o eso pienso
 }
 
 

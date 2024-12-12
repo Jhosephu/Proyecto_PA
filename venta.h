@@ -31,7 +31,7 @@ class Venta {
             return total;
         }
 		
-		void agregarProducto(Producto p, int cantidad);
+		void agregarProducto(Producto p, int cantidad, int id);
         void emitirComprobante() const;
         void actualizarStock();
 		void mostrarComprobante();

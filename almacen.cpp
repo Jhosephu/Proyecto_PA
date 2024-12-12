@@ -38,6 +38,19 @@ vector<Producto*> Almacen::encontrarPorInicioNombre(string nombrePrefijo) {
 	return productosEncontrados;
 }
 
+vector<Producto*> Almacen::productosConBajoStock(int stock = 5) {
+	std::vector<Producto*> productosEncontrados;
+
+	for (Producto &producto : productos) {
+		// Búsqueda por coincidencia parcial (contiene el nombre)
+		if (producto.obCantidad() <= stock) {
+			productosEncontrados.push_back(&producto);
+		}
+	}
+
+	return productosEncontrados;
+}
+
 Producto* Almacen::buscarPorNombre(string nombreBuscado) {
 	auto it = indiceNombre.find(nombreBuscado);
 	if (it != indiceNombre.end()) {
@@ -46,8 +59,13 @@ Producto* Almacen::buscarPorNombre(string nombreBuscado) {
 	return nullptr;
 }
 
-void Almacen::cargarDesdeArchivo() {
-	ifstream archivo(nombreArchivo);
+vector<Producto> Almacen::obtenerProductos() {
+	return productos;
+}
+
+void Almacen::cargarDesdeArchivo(string nArchivo = "") {
+	string archivoAUsar = nArchivo.empty() ? nombreArchivo : nArchivo;
+	ifstream archivo(archivoAUsar);
 
 	if(!archivo.is_open()) {
 		cout << "ERROR: no se pudo abrir el archivo";
@@ -75,8 +93,9 @@ void Almacen::cargarDesdeArchivo() {
 	archivo.close();
 }
 
-void Almacen::guardarEnArchivo() {
-	ofstream archivo(nombreArchivo);
+void Almacen::guardarEnArchivo(string nArchivo = "") {
+	string archivoAUsar = nArchivo.empty() ? nombreArchivo : nArchivo;
+	ofstream archivo(archivoAUsar);
 
 	if(!archivo.is_open()) {
 		cout << "ERROR: no se pudo abrir el archivo";
@@ -158,16 +177,6 @@ void Almacen::eliminarProducto(int id) {
 	int pos = buscarPorID(id);
 	if(pos != -1) {
 		productos.erase(productos.begin()+pos);
-		cout << "Producto eliminado correctamente" << endl;
-		return;
-	} else {
-		cout << "ERROR: No se encontro el Producto" << endl;
-	}
-}
-
-void Almacen::mostrarProductos() {
-	for (Producto &producto : productos) {
-		producto.mostrar();
 	}
 }
 
@@ -181,12 +190,18 @@ void Almacen::mostrarAlgunosProductos(vector<Producto*> productos2) {
 	}
 }
 
+void Almacen::mostrarProductos(){
+	for (Producto &producto : productos) {
+		producto.mostrar();
+	}
+}
+
 void Almacen::actualizarPrecioProducto(int id, float nuevoPrecio) {
 	int pos = buscarPorID(id);
 	if (pos != -1) {
 		productos[pos].actualizarPrecio(nuevoPrecio);
 	} else {
-		cout << "ERROR: No se encontro el Producto" << endl;
+		cout << "                                        ERROR: No se encontro el Producto" << endl;
 	}
 }
 
@@ -195,7 +210,7 @@ void Almacen::aumentarCantidadProducto(int id, int cantidad) {
 	if (pos != -1) {
 		productos[pos].aumentarCantidad(cantidad);
 	} else {
-		cout << "ERROR: No se encontro el Producto" << endl;
+		cout << "                                        ERROR: No se encontro el Producto" << endl;
 	}
 }
 
@@ -226,4 +241,3 @@ bool Almacen::verificarIdEnProductos(int id) {
 	if(pos != -1) return true;
 	return false;
 }
-

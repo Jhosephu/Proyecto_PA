@@ -2,6 +2,8 @@
 #include"venta.h"
 #include"transacciones.h"
 
+
+
 using namespace std;
 
 Transacciones::Transacciones() {}
@@ -13,6 +15,7 @@ void Transacciones::registrarVenta(Venta venta) {
 
 void Transacciones::listarVentas() {
     if (ventas.empty()) {
+
         cout << "No hay ventas registradas.\n";
         return;
     }
