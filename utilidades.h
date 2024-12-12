@@ -18,7 +18,7 @@ class Utilidades
 		void gestionarProductos(Almacen &almacen);
 		void reporteConsultas(Almacen &almacen);
 		void operacioneVentas(Almacen &almacen);
-		void archivo();
+		void archivo(Almacen &almacen);
 		//Funciones EstadoAlmacen
 		void reporteEstadoDelAlmacen(Almacen &almacen);
 		void reporteProductosConBajoStock(Almacen &almacen);
@@ -30,6 +30,9 @@ class Utilidades
 		void modificarProductoM(Almacen &almacen);
 		void buscarProductoM(Almacen &almacen);
 		void eliminarProductoM(Almacen &almacen);
+		// Funciones de archivos
+		void cargarDatosDesdeArchivo(Almacen &almacen);
+		void guardarDatosEnArchivo(Almacen &almacen);
 		// Extras
 		void limpiarPantalla();
 		void gotoxy(int, int);

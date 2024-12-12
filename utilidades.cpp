@@ -83,7 +83,7 @@ void Utilidades::mostrarMenuPrincipal(Almacen &almacen) {
                 operacioneVentas(almacen);
                 break;
             case 4:
-                archivo();
+                archivo(almacen);
                 break;
             case 5:
             	cout << "\n";
@@ -320,7 +320,7 @@ void Utilidades::operacioneVentas() {
     } while (opcion != 4);
 }
 
-void Utilidades::archivo() {
+void Utilidades::archivo(Almacen &almacen) {
 	
     int opcion = 0;
     do {
@@ -358,10 +358,10 @@ void Utilidades::archivo() {
 		
         switch (opcion) {
             case 1:
-                //almacen.; // funcion no agregada todavia
+                cargarDatosDesdeArchivo(almacen);
                 break;
             case 2:
-                cout << "Opcion de Guardar Datos en Archivo seleccionada.\n"; // funcion no agregada todavia
+                guardarDatosEnArchivo(almacen);
                 break;
             case 3:
                 cout << "Regresando al Menu Principal...\n";
@@ -631,6 +631,38 @@ void Utilidades::reporteProductosOrdenadosPorPrecio(Almacen &almacen) {
     	Producto* p = &productosOrdenados[i];
         printProducto2(x, y+4+(2*i), p);
     }
+
+    system("pause");
+}
+
+// FUNCIOES DE MENU DE ARCHIVOS
+
+void Utilidades::cargarDatosDesdeArchivo(Almacen &almacen) {
+    int x = 40, y = 29;
+    string nombreArchivo;
+
+    printC(x, y, "Ingrese el nombre del archivo para cargar los datos: ");
+    cin.ignore();
+    getline(cin, nombreArchivo);
+
+    almacen.cargarDesdeArchivo(nombreArchivo);
+
+    printC(x, y+2, "Datos cargados exitosamente desde el archivo: " + nombreArchivo + "\n\n");
+
+    system("pause");
+}
+
+void Utilidades::guardarDatosEnArchivo(Almacen &almacen) {
+    int x = 40, y = 29;
+    string nombreArchivo;
+
+    printC(x, y, "Ingrese el nombre del archivo para guardar los datos: ");
+    cin.ignore();
+    getline(cin, nombreArchivo);
+
+    almacen.guardarEnArchivo(nombreArchivo);
+
+    printC(x, y+2, "Datos guardados exitosamente en el archivo: " + nombreArchivo + "\n\n");
 
     system("pause");
 }
