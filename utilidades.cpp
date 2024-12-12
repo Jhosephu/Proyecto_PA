@@ -218,7 +218,10 @@ void Utilidades::reporteConsultas(Almacen &almacen) {
     } while (opcion != 4);
 }
 
-void Utilidades::operacioneVentas(Almacen &almacen) {
+
+void Utilidades::operacioneVentas() {
+	//Almacen almacen;
+    //almacen.cargarDesdeArchivo();
 	Venta venta;
     Transacciones transacciones;
     int opcion = 0;
@@ -355,7 +358,7 @@ void Utilidades::archivo() {
 		
         switch (opcion) {
             case 1:
-                cout << "Opcion de Cargar Datos desde Archivo seleccionada.\n"; // funcion no agregada todavia
+                //almacen.; // funcion no agregada todavia
                 break;
             case 2:
                 cout << "Opcion de Guardar Datos en Archivo seleccionada.\n"; // funcion no agregada todavia
