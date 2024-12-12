@@ -502,9 +502,36 @@ void Utilidades::printC(int x, int y, string text) {
 }
 
 void Utilidades::printProducto(int x, int y, Producto* p) {
-    gotoxy(x, y);
+    /*gotoxy(x, y);
     cout << "ID: " << p->obID() << "\tNombre: " << p->obNombre() << "\tCantidad: "
-		<< p->obCantidad() << "\tPrecio: " << p->obPrecio() << endl;
+		<< p->obCantidad() << "\tPrecio: " << p->obPrecio() << endl;*/
+		
+	limpiarPantalla();
+
+	int colorTitulo = 9;   
+	int colorOpciones = 11; 
+	int colorBordes = 8;  
+	gotoxy(40,5);
+	cambiarColorTexto(colorBordes);
+    cout << "===================================" << endl;
+    gotoxy(40,7);
+    cambiarColorTexto(colorTitulo);
+    cout << "     INFORMACION DEL PRODUCTO      " << endl;
+    gotoxy(40,9);
+    cambiarColorTexto(colorBordes);
+    cout << "===================================" << endl;
+    gotoxy(42,11);
+    cambiarColorTexto(colorOpciones);
+    cout << "ID: " << p->obID() << endl;
+    gotoxy(42,13);
+    cout << "Nombre: " << p->obNombre() << endl;
+    gotoxy(42,15);
+    cout << "Cantidad: " << p->obCantidad() << endl;
+    gotoxy(42,17);
+    cout << "Precio: S/" << p->obPrecio() << endl;
+    gotoxy(40,19);
+    cambiarColorTexto(colorBordes);
+    cout << "===================================" << endl;	
 }
 
 // Funcion para cambiar el color de texto
