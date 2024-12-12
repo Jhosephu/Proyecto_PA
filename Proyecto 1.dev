@@ -188,17 +188,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit10]
-<<<<<<< HEAD
-FileName=transacciones.cpp
-CompileCpp=1
-Folder=src
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit11]
 =======
 >>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
@@ -214,6 +203,17 @@ BuildCmd=
 =======
 
 [Unit11]
+FileName=transacciones.h
+CompileCpp=1
+Folder=include
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+>>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
+
+[Unit10]
 FileName=transacciones.cpp
 CompileCpp=1
 Folder=src
@@ -222,5 +222,4 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
->>>>>>> f594786b0dfd1a9e20ac94dd5f7a3bb25f1cd2a7
 
